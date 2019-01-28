@@ -1,2 +1,2 @@
-# what-is-gauge
-[PRESENTATION] What is Gauge?
+# introducing-gauge
+[PRESENTATION] Introducing Gauge
