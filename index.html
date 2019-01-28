@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Introducing Gauge</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,
+                                   initial-scale=1,
+                                   user-scalable=yes">
+    <meta name="author" content="Scott Davis <scott.davis@thoughtworks.com>">
+    <meta name="description" content="Introducing Gauge">
+    <meta name="keywords"
+          content="ThoughtWorks, Gauge, testing, user journey, fitness function">
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="css/talk-o-vision.css">
+
+    <style>
+    .main-title{
+      background: url('slides/title/gauge.png') no-repeat center center;
+      background-size: contain;
+    }
+
+    .banner{
+      background-color: var(--theme-foreground-color);
+      opacity: 0.9;
+      top: 45vh;
+    }
+
+    h2 a{
+      color: var(--theme-foreground-color);
+      text-decoration: none;
+    }
+
+    h2 a:hover{
+      color: var(--theme-link-hover-color);
+    }
+    </style>
+
+  </head>
+  <body>
+    <main class="slideshow">
+      <h1 hidden aria-hidden="false">Introducing Gauge</h1>
+
+      <section class="main-title">
+        <h2 hidden aria-hidden="false">Introducing Gauge</h2>
+        <audio src="slides/title/audio.mp3"></audio>
+        <figure>
+          <div class="banner">
+            Introducing Gauge
+            <div class="subtitle">
+              A Framework for User Journey Testing
+            </div>
+            <div class="bio">
+              <br>
+              Scott Davis<br>
+              <a href="mailto:scott.davis@thoughtworks.com">scott.davis@thoughtworks.com</a><br>
+              <a href="https://twitter.com/scottdavis99">@scottdavis99</a>
+            </div>
+          </div>
+          <figcaption>
+            <p>
+              Introducing Gauge, a framework for User Journey tests and
+              Fitness Functions.
+            </p>
+            <p>
+              Presented by Scott Davis. His email address is
+              scott.davis@thoughtworks.com. His Twitter handle is @scottdavis99.
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="theme-invert">
+        <h2 hidden aria-hidden="false">Biography</h2>
+        <audio src="slides/bio/audio.mp3"></audio>
+        <figure>
+          <img src="slides/bio/scott-davis-bio.png"
+               alt="Scott Davis' Biography"
+               class="contain">
+
+          <figcaption>
+           <p>Hi! My name is Scott Davis. I'm currently a Principle Engineer
+             with ThoughtWorks. Before that, I ran a software consultancy out
+             of Denver, Colorado called ThirstyHead. </p>
+
+           <p>I've been writing about web development for years -- articles
+             for IBM, books for O'Reilly and the Pragmatic Bookshelf, and most
+             recently videos for O'Reilly as well.</p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2><a href="https://gauge.org/">https://gauge.org/</a></h2>
+        <audio src="slides/gauge/audio.mp3"></audio>
+        <figure>
+          <a href="https://gauge.org/">
+          <img src="slides/gauge/gauge-home.png"
+               alt="Gauge home page"
+               class="contain-with-header"
+               data-src="https://gauge.org/">
+          </a>
+
+          <figcaption>
+            <p>
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="theme-invert">
+        <h2 hidden aria-hidden="false">Frameworks and Unit Testing</h2>
+        <audio src="slides/unit-test/audio.mp3"></audio>
+        <figure>
+          <img src="slides/unit-test/frameworks-and-tests.png"
+               alt="Frameworks and Unit Testing"
+               class="contain">
+          </a>
+
+          <figcaption>
+            <p>
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="theme-invert">
+        <h2 hidden aria-hidden="false">The Test Pyramid</h2>
+        <audio src="slides/unit-test/audio.mp3"></audio>
+        <figure>
+          <a href="https://martinfowler.com/articles/practical-test-pyramid.html">
+          <img src="slides/test-pyramid/test-pyramid.png"
+               alt="The Test Pyramid"
+               class="contain"
+               data-src="https://martinfowler.com/articles/practical-test-pyramid.html">
+          </a>
+
+          <figcaption>
+            <p>
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+
+      <section class="theme-invert">
+        <h2 hidden aria-hidden="false">Unit Testing</h2>
+        <audio src="slides/unit-test/audio.mp3"></audio>
+        <figure>
+          <a href="https://martinfowler.com/bliki/UnitTest.html">
+          <img src="slides/unit-test/unit-test.png"
+               alt="Unit Testing"
+               class="contain"
+               data-src="https://martinfowler.com/bliki/UnitTest.html">
+          </a>
+
+          <figcaption>
+            <p>
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+
+
+      <section class="theme-invert">
+        <h2 hidden aria-hidden="false">React Unit Testing</h2>
+        <audio src="slides/unit-test/audio.mp3"></audio>
+        <figure>
+          <a href="https://jestjs.io/docs/en/getting-started">
+          <img src="slides/unit-test/jest-unit-test.png"
+               alt="React Unit Testing"
+               class="contain"
+               data-src="https://jestjs.io/docs/en/getting-started">
+          </a>
+
+          <figcaption>
+            <p>
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="theme-invert">
+        <h2 hidden aria-hidden="false">Angular Unit Testing</h2>
+        <audio src="slides/unit-test/audio.mp3"></audio>
+        <figure>
+          <a href="https://angular.io/guide/testing#component-test-basics">
+          <img src="slides/unit-test/angular-unit-test.png"
+               alt="Angular Unit Testing"
+               class="contain"
+               data-src="https://angular.io/guide/testing#component-test-basics">
+          </a>
+
+          <figcaption>
+            <p>
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+
+      <section>
+        <h2><a href="https://gauge.org/">https://gauge.org/</a></h2>
+        <audio src="slides/gauge/audio.mp3"></audio>
+        <figure>
+          <a href="https://gauge.org/">
+          <img src="slides/gauge/gauge-home.png"
+               alt="Gauge home page"
+               class="contain-with-header"
+               data-src="https://gauge.org/">
+          </a>
+
+          <figcaption>
+            <p>
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2 hidden aria-hidden="false">User Journey Test</h2>
+        <audio src="slides/gauge/audio.mp3"></audio>
+        <figure>
+          <a href="https://martinfowler.com/bliki/UserJourneyTest.html">
+          <img src="slides/user-journey-test/user-journey-test.png"
+               alt="User Journey Test"
+               class="contain"
+               data-src="https://martinfowler.com/bliki/UserJourneyTest.html">
+          </a>
+
+          <figcaption>
+            <p>
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2 hidden aria-hidden="false">Gauge Specs</h2>
+        <audio src="slides/gauge/audio.mp3"></audio>
+        <figure>
+          <a href="https://gauge.org/">
+          <img src="slides/gauge/gauge-specs.png"
+               alt="Gauge Specs"
+               class="contain"
+               data-src="https://gauge.org/">
+          </a>
+
+          <figcaption>
+            <p>
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2 hidden aria-hidden="false">Gauge Impls</h2>
+        <audio src="slides/gauge/audio.mp3"></audio>
+        <figure>
+          <a href="https://gauge.org/">
+          <img src="slides/gauge/gauge-impl.png"
+               alt="Gauge Impls"
+               class="contain"
+               data-src="https://gauge.org/">
+          </a>
+
+          <figcaption>
+            <p>
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+
+
+
+
+
+
+      <section class="section-title">
+        <h2><span class="highlight">Conclusion</span></h2>
+        <audio src="slides/conclusion/audio.mp3"></audio>
+        <figure>
+          <figcaption>
+            <p>
+              In conclusion, here are a few final tips.
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+
+
+      <section class="theme-invert">
+        <h2 hidden aria-hidden="false">Frameworks and Unit Testing</h2>
+        <audio src="slides/unit-test/audio.mp3"></audio>
+        <figure>
+          <img src="slides/unit-test/frameworks-and-tests.png"
+               alt="Frameworks and Unit Testing"
+               class="contain">
+          </a>
+
+          <figcaption>
+            <p>
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="theme-invert">
+        <h2 hidden aria-hidden="false">The Test Pyramid</h2>
+        <audio src="slides/unit-test/audio.mp3"></audio>
+        <figure>
+          <a href="https://martinfowler.com/articles/practical-test-pyramid.html">
+          <img src="slides/test-pyramid/test-pyramid.png"
+               alt="The Test Pyramid"
+               class="contain"
+               data-src="https://martinfowler.com/articles/practical-test-pyramid.html">
+          </a>
+
+          <figcaption>
+            <p>
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2><a href="https://gauge.org/">https://gauge.org/</a></h2>
+        <audio src="slides/gauge/audio.mp3"></audio>
+        <figure>
+          <a href="https://gauge.org/">
+          <img src="slides/gauge/gauge-home.png"
+               alt="Gauge home page"
+               class="contain-with-header"
+               data-src="https://gauge.org/">
+          </a>
+
+          <figcaption>
+            <p>
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+
+
+
+
+      <section class="main-title">
+        <h2 hidden aria-hidden="false">Introducing Gauge</h2>
+        <audio src="slides/title/audio.mp3"></audio>
+        <figure>
+          <div class="banner">
+            Introducing Gauge
+            <div class="subtitle">
+              A Framework for User Journey Testing
+            </div>
+            <div class="bio">
+              <br>
+              Scott Davis<br>
+              <a href="mailto:sdavis@thoughtworks.com">sdavis@thoughtworks.com</a><br>
+              <a href="https://twitter.com/scottdavis99">@scottdavis99</a>
+            </div>
+          </div>
+          <figcaption>
+            <p>
+              Introducing Gauge, a framework for User Journey tests and
+              Fitness Functions.
+            </p>
+            <p>
+              Presented by Scott Davis. His email address is
+              sdavis@thoughtworks.com. His Twitter handle is @scottdavis99.
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+
+
+
+
+    </main>
+
+    <script src="js/talk-o-vision.js"></script>
+  </body>
+</html>
