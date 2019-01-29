@@ -223,7 +223,7 @@ class Slides{
       case 65: // a
         event.preventDefault();
         this.enableAudio = !this.enableAudio;
-        this.autoPlay = !this.autoPlay;
+        this.autoPlay = this.enableAudio; 
         this.playAudio();
         break;
 
