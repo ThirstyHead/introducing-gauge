@@ -191,6 +191,14 @@
         parent.postMessage(message, "*")
       }
 
+      toggleAutoplay(){
+        let message = {};
+        message.method = 'toggleAutoplay';
+        const parent = window.opener.parent;
+        parent.postMessage(message, "*")
+      }
+
+
 
       /**
         * Enables keyboard shortcuts
@@ -211,6 +219,12 @@
           case 39: // right
             event.preventDefault();
             this.next()
+            break;
+
+          // autoplay
+          case 65: // a
+            event.preventDefault();
+            this.toggleAutoplay();
             break;
 
           // fullscreen

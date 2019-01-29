@@ -251,16 +251,16 @@ class Slides{
         this.fullscreen();
         break;
 
-      // play / pause
-      case 80: // p
-        event.preventDefault();
-        this.playAudio();
-        break;
-
       // goto home slide
       case 72: // h
         event.preventDefault();
         this.goto(1);
+        break;
+
+      // play / pause
+      case 80: // p
+        event.preventDefault();
+        this.playAudio();
         break;
 
       // transcript / table of contents
@@ -294,6 +294,9 @@ class Slides{
         break;
       case 'playAudio':
         this.playAudio();
+        break;
+      case 'toggleAutoplay':
+        this.toggleAutoplay();
         break;
     }
   }
