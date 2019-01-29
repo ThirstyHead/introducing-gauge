@@ -292,6 +292,9 @@ class Slides{
       case 'goto':
         this.goto(message.args);
         break;
+      case 'playAudio':
+        this.playAudio();
+        break;
     }
   }
 

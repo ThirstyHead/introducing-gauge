@@ -184,6 +184,14 @@
         this.goto(next);
       }
 
+      playAudio(){
+        let message = {};
+        message.method = 'playAudio';
+        const parent = window.opener.parent;
+        parent.postMessage(message, "*")
+      }
+
+
       /**
         * Enables keyboard shortcuts
         * For example: next, previous, fullscreen
@@ -216,6 +224,13 @@
             event.preventDefault();
             this.goto(1);
             break;
+
+          // play / pause
+          case 80: // p
+            event.preventDefault();
+            this.playAudio();
+            break;            
+
         }
       }
 
@@ -228,7 +243,7 @@
 
         // remove current from all slides
         let liList = document.querySelectorAll('li');
-        for(let i=0; i < liList.length; i++){
+        for(let i=0; i<liList.length; i++){
           liList[i].classList.remove('current');
         }
 
