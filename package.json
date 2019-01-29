@@ -1,10 +1,10 @@
 {
   "name": "introducing-gauge",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "[PRESENTATION] Introducing Gauge: A Framework for User Journey Testing",
+  "author": "Scott Davis <scott.davis@thoughtworks.com>",
+  "license": "CC-BY-4.0",
   "main": "index.html",
-  "dependencies": {},
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,8 +12,6 @@
     "type": "git",
     "url": "git+https://github.com/ThirstyHead/introducing-gauge.git"
   },
-  "author": "Scott Davis <scott.davis@thoughtworks.com>",
-  "license": "CC-BY-4.0",
   "bugs": {
     "url": "https://github.com/ThirstyHead/introducing-gauge/issues"
   },
