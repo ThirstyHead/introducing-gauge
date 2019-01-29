@@ -23,7 +23,7 @@ class Slides{
     window.addEventListener('keydown', evt => this.keyHandler(evt));
     window.addEventListener('hashchange', evt => this.hashchangeHandler(evt));
     window.addEventListener('message', evt => this.messageHandler(evt));
-    this.playAudio = false;
+    this.enableAudio = false;
     this.autoPlay = false;
   }
 
@@ -173,6 +173,32 @@ class Slides{
   }
 
   /**
+    * Plays audio for the current slide 
+    */
+  playAudio(){
+    // stop all current audio
+    const audioList = document.querySelectorAll('audio');
+    for(let i=0; i<audioList.length; i++){
+      audioList[i].pause();
+      audioList[i].currentTime = 0;
+    }
+
+    if(this.enableAudio){
+      const audio = document.querySelector(`section[id="${this.currentId}"] audio`);
+      if(audio && audio.paused){
+        audio.play();
+      }else{
+        audio.pause();
+      }
+
+      if(this.autoPlay){
+        audio.addEventListener('ended', evt => this.audioEndedHandler(evt));
+      }
+    }
+ }
+
+    
+  /**
     * Enables keyboard shortcuts
     * For example: next, previous, fullscreen
     */
@@ -193,6 +219,14 @@ class Slides{
         this.next()
         break;
 
+      // autoplay
+      case 65: // a
+        event.preventDefault();
+        this.enableAudio = !this.enableAudio;
+        this.autoPlay = !this.autoPlay;
+        this.playAudio();
+        break;
+
       // fullscreen
       case 70: // f
         event.preventDefault();
@@ -202,12 +236,8 @@ class Slides{
       // play / pause
       case 80: // p
         event.preventDefault();
-        const audio = document.querySelector(`section[id="${this.currentId}"] audio`);
-        if(audio && audio.paused){
-          audio.play();
-        }else{
-          audio.pause();
-        }
+        this.enableAudio = !this.enableAudio;
+        this.playAudio();
         break;
 
       // goto home slide
@@ -232,22 +262,8 @@ class Slides{
     */
   hashchangeHandler(event){
     window.localStorage.setItem('currentSlide', JSON.stringify(this.slideInfo(this.currentId)));
-    if(this.playAudio){
-      // stop all current audio
-      const audioList = document.querySelectorAll('audio');
-      for(let i=0; i<audioList.length; i++){
-        audioList[i].pause();
-        audioList[i].currentTime = 0;
-      }
-
-      // play audio for current slide
-      const audio = document.querySelector(`section[id="${this.currentId}"] audio`);
-      if(audio){
-        audio.play();
-        if(this.autoPlay){
-          audio.addEventListener('ended', evt => this.audioEndedHandler(evt));
-        }
-      }
+    if(this.enableAudio){
+      this.playAudio();
     }
   }
 
