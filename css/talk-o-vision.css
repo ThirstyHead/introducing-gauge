@@ -61,6 +61,11 @@ figcaption{
   display: none;
 }
 
+figure a{
+  color: var(--theme-foreground-color);
+  text-decoration: none;
+} 
+
 h2{
   font-size: 5rem;
   padding-top: 1rem;
@@ -159,12 +164,14 @@ ul li{
 }
 
 .contain{
-  height: 95vh;
+  height: 95vh; 
+  max-width: 95%;
   object-fit: contain;
 }
 
 .contain-with-header{
   height: 65vh;
+  max-width: 95%;
   object-fit: contain;
 }
 

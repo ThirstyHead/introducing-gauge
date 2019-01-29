@@ -130,7 +130,7 @@
         <audio src="slides/unit-test/audio.mp3"></audio>
         <figure>
           <a href="https://martinfowler.com/articles/practical-test-pyramid.html">
-          <img src="slides/test-pyramid/test-pyramid.png"
+          <img src="slides/test-pyramid/test-pyramid_1024px.png"
                alt="The Test Pyramid"
                class="contain"
                data-src="https://martinfowler.com/articles/practical-test-pyramid.html">
@@ -228,7 +228,7 @@
         </figure>
       </section>
 
-      <section>
+      <section class="theme-invert">
         <h2 hidden aria-hidden="false">User Journey Test</h2>
         <audio src="slides/gauge/audio.mp3"></audio>
         <figure>
@@ -249,7 +249,7 @@
         </figure>
       </section>
 
-      <section>
+      <section class="theme-invert">
         <h2 hidden aria-hidden="false">Design Thinking Starts with Empathy</h2>
         <audio src="slides/gauge/audio.mp3"></audio>
         <figure>
@@ -270,6 +270,26 @@
         </figure>
       </section>
 
+      <section>
+        <h2 hidden aria-hidden="false">GroceryWorks</h2>
+        <audio src="slides/gauge/audio.mp3"></audio>
+        <figure>
+          <a href="https://thirstyhead.com/groceryworks">https://thirstyhead.com/grocery
+            works</a>
+          <a href="https://thirstyhead.com/groceryworks">
+          <img src="slides/groceryworks/groceryworks.png"
+               alt="GroceryWorks"
+               class="contain"
+               data-src="https://thirstyhead.com/groceryworks">
+          </a>
+
+          <figcaption>
+            <p>So, here's a website for a fictional grocery store called GroceryWorks. As you click around, you'll see that tapping the categories on the left show you different types of food items -- beans, nuts, pasta, produce, and so on. Clicking on a food item adds it to the cart on the right. Clicking on the food item again removes it from the cart. Clicking 'Purchase' allows you to place your order or cancel it. 
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
 
 
       <section>
@@ -284,7 +304,11 @@
           </a>
 
           <figcaption>
+            <p>User Journey tests in Gauge are comprised of two complementary parts -- Specifications, written in Markdown; and Tests, written in the programming language of your choice. (More on that in just a moment...) 
+            </p>
+
             <p>
+              Markdown is basically plain text with some simple decorators like hashes for headers (which represent the name of your specs) and asterisks for bullet items (which represent the individual steps to take). Markdown gives you the flexibility to express the steps in exactly the language your end user uses to describe them.    
             </p>
           </figcaption>
         </figure>
@@ -302,7 +326,23 @@
           </a>
 
           <figcaption>
-            <p>
+            <p>You can implement your tests in a variety of popular programming languages: JavaScript, C#, Java, Python, or Ruby. What you're seeing here are the tests implemented in a JavaScript library written by ThoughtWorks called Taiko. I'm really impressed with it -- look how light and readable the syntax is. 
+            </p>
+            <p>What you've probably figured out already is that each step in JavaScript finds its corresponding step in Markdown by doing a simple string comparison. Simplicity is the best kind of cleverness, wouldn't you say?</p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2 hidden aria-hidden="false">Gauge Report</h2>
+        <audio src="slides/gauge/audio.mp3"></audio>
+        <figure>
+            <img src="slides/gauge/gauge-report.png"
+               alt="Gauge Report"
+               class="contain"
+               data-src="https://gauge.org/">
+          <figcaption>
+            <p>When you run your tests, you end up with a nice-looking report that tells you how many of your specifications passed, and if they failed, which steps caused them to fail. 
             </p>
           </figcaption>
         </figure>
@@ -320,7 +360,7 @@
         <figure>
           <figcaption>
             <p>
-              In conclusion, here are a few final tips.
+              So, what have we learned? 
             </p>
           </figcaption>
         </figure>
@@ -339,24 +379,26 @@
 
           <figcaption>
             <p>
+            Unit testing libraries are still a key part of any responsible developer's toolkit. We want you to continue to use the library of your choice. Gauge doesn't have an opinion on what unit testing library you use, because Gauge is for writing an entirely different category of tests. 
             </p>
           </figcaption>
         </figure>
       </section>
 
       <section class="theme-invert">
-        <h2 hidden aria-hidden="false">The Test Pyramid</h2>
-        <audio src="slides/unit-test/audio.mp3"></audio>
+        <h2 hidden aria-hidden="false">Design Thinking Starts with Empathy</h2>
+        <audio src="slides/gauge/audio.mp3"></audio>
         <figure>
-          <a href="https://martinfowler.com/articles/practical-test-pyramid.html">
-          <img src="slides/test-pyramid/test-pyramid.png"
-               alt="The Test Pyramid"
+          <a href="https://www.interaction-design.org/literature/article/stage-1-in-the-design-thinking-process-empathise-with-your-users">
+          <img src="slides/design-thinking/design-thinking-empathy.png"
+               alt="Design Thinking starts with empathy."
                class="contain"
-               data-src="https://martinfowler.com/articles/practical-test-pyramid.html">
+               data-src="https://www.interaction-design.org/literature/article/stage-1-in-the-design-thinking-process-empathise-with-your-users">
           </a>
 
           <figcaption>
             <p>
+            Gauge wants your step #1 to be empathy. Gauge wants you to think like a user, because they are the ones who will ultimately decide if your web app is acceptable or not. 
             </p>
           </figcaption>
         </figure>
@@ -374,8 +416,9 @@
           </a>
 
           <figcaption>
-            <p>
+            <p>Gauge is for writing User Journey tests. Capture the words your end users use, and the steps they take, in plain English Markdown files. Implement the tests in the language of your choice. Show them easy-to-read reports, proving to them that your web app does exactly what they ask it to do. 
             </p>
+            <p>If you're already writing unit tests, this is your chance to level up and start thinking like a user instead of a developer. Are you up to the challenge?</p>
           </figcaption>
         </figure>
       </section>
