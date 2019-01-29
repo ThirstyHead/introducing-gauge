@@ -298,6 +298,10 @@ class Slides{
       case 'toggleAutoplay':
         this.toggleAutoplay();
         break;
+      case 'toggleTranscript':
+        this.toggleTranscript();
+        break;
+
     }
   }
 

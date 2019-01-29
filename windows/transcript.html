@@ -55,6 +55,7 @@
         this.populatePage();
         window.addEventListener('keydown', evt => this.keyHandler(evt));
         window.addEventListener('storage', evt => this.storageHandler(evt));
+        window.location.hash = this.currentId;
       }
 
       /**
@@ -198,6 +199,13 @@
         parent.postMessage(message, "*")
       }
 
+      toggleTranscript(){
+        let message = {};
+        message.method = 'toggleTranscript';
+        const parent = window.opener.parent;
+        parent.postMessage(message, "*")
+      }
+
 
 
       /**
@@ -244,6 +252,12 @@
             event.preventDefault();
             this.playAudio();
             break;            
+
+          // transcript / table of contents
+          case 84: // t
+            event.preventDefault();
+            this.toggleTranscript();
+            break;
 
         }
       }
