@@ -94,6 +94,7 @@ table{
 
 td, th{
   text-align: left;
+  vertical-align: top;
   padding: 0.2rem 0.5rem 0.2rem 0.5rem;
 }
 
