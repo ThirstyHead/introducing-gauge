@@ -18,5 +18,9 @@
   "homepage": "https://github.com/ThirstyHead/introducing-gauge#readme",
   "devDependencies": {
     "talk-o-vision": "github:thirstyhead/talk-o-vision"
+  },
+  "dependencies": {
+    "hapi": "^18.1.0",
+    "inert": "^5.1.2"
   }
 }
