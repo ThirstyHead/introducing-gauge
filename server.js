@@ -48,3 +48,13 @@ let server = http.createServer(function (request, response) {
 
 server.listen(port);
 console.log(`Server running at http://127.0.0.1:${port}/`);
+
+let pid = process.pid;
+console.log(`PID: ${pid}`);
+// process.kill(process.pid, 'SIGTERM')
+
+process.on('SIGTERM', () => {
+  server.close( () => {
+    console.log('Server stopped');
+  });
+});
