@@ -7,7 +7,6 @@
   "main": "index.html",
   "scripts": {
     "addlang": "node util/addlang.js $*",
-    "build": "node util/build.js $*",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,8 +21,5 @@
   "devDependencies": {
     "talk-o-vision": "github:thirstyhead/talk-o-vision"
   },
-  "dependencies": {
-    "hapi": "^18.1.0",
-    "inert": "^5.1.2"
-  }
+  "dependencies": {}
 }
