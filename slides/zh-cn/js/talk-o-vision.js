@@ -19,6 +19,7 @@ class Slides{
     */
   constructor(){
     this.list = document.querySelectorAll(".slideshow > section");
+    this.importSlides();
     this.addNumberToSlides();
     window.addEventListener('keydown', evt => this.keyHandler(evt));
     window.addEventListener('hashchange', evt => this.hashchangeHandler(evt));
@@ -26,6 +27,15 @@ class Slides{
     this.autoPlay = false;
     this.addAudioEndedEventListener();
   }
+
+  /**
+   * Imports individual slides into this slideshow
+   */
+  importSlides(){
+    let slide = this.list[0];
+    console.log(slide.dataset.src);
+  }
+
 
   /**
     * Adds 'ended' event listener to all audio elements 
