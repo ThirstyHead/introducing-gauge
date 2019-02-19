@@ -33,29 +33,39 @@ class Slides{
    */
   importSlides(){
     let parser = new DOMParser();
+    let importCount = 0;
 
     for(let i=0; i<this.list.length; i++){
       let slide = this.list[i];
       if(slide.innerHTML === ''){
+        importCount++;
         fetch(slide.dataset.src)
           .then( (response) => {
             return response.text();
           })
           .then( (text) => {
             let htmlFragment = parser.parseFromString(text, 'text/html');
-            let baseElement = document.createElement('base');
-            baseElement.setAttribute('href', slide.dataset.src);
-            htmlFragment.querySelector('body').appendChild(baseElement);
-            console.log(htmlFragment);
             let newSlide = htmlFragment.querySelector('section');
+            // set attributes
             newSlide.setAttribute('id', slide.getAttribute('id'));
             newSlide.dataset.src = slide.dataset.src;
+            // fix img src
+            let imgList = newSlide.querySelectorAll('img');
+            for(let j=0; j<imgList.length; j++){
+              let img = imgList[j];
+              let originalSrc = img.getAttribute('src');
+              img.setAttribute('src', `${slide.dataset.src}/${originalSrc}`);
+            }
             let parent = slide.parentNode;
-            // parent.replaceChild(newSlide, slide);
+            parent.replaceChild(newSlide, slide);
           });
       }
     }
- }
+
+    if(importCount > 0){
+      console.log(`${importCount} remote slides imported`);
+    }
+  }
 
 
   /**
