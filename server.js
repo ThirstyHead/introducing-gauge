@@ -5,7 +5,7 @@ const path = require('path');
 
 const port = 8000;
 
-http.createServer(function (request, response) {
+let server = http.createServer(function (request, response) {
   let filePath = '.' + request.url;
   if(filePath.endsWith('/')) {
     filePath += 'index.html';
@@ -44,5 +44,7 @@ http.createServer(function (request, response) {
     }
   });
 
-}).listen(port);
+});
+
+server.listen(port);
 console.log(`Server running at http://127.0.0.1:${port}/`);
