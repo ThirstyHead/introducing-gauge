@@ -1,535 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Introducing Gauge</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,
-                                   initial-scale=1,
-                                   user-scalable=yes">
+    <title>Introducing Gauge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Scott Davis <scott.davis@thoughtworks.com>">
     <meta name="description" content="Introducing Gauge">
     <meta name="keywords"
           content="ThoughtWorks, Gauge, testing, user journey, fitness function">
     <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="stylesheet" href="css/talk-o-vision.css">
+
 
     <style>
-      .main-title{
-        background: url('slides/title/gauge.png') no-repeat center center;
-        background-size: contain;
-      }
-
-      .banner{
-        background-color: var(--theme-foreground-color);
-        opacity: 0.9;
-        top: 45vh;
-      }
-
-      h2 a{
-        color: var(--theme-foreground-color);
+      a{
+        color: white;
         text-decoration: none;
       }
 
-      h2 a:hover{
-        color: var(--theme-link-hover-color);
+      a:hover{
+        color: red;
+        text-decoration: underline;
       }
-    </style>
+
+      body{
+        background-color: black;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.4em;
+        padding: 1em;
+
+      }
+
+      h1{
+        font-family: "Times New Roman", Times, serif;
+        font-size: 2em;
+      }
+
+      h2{
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      img{
+        float: left;
+        width: 33%;
+        clip-path: circle();
+        shape-outside: circle();  
+      }
+      
+    </style>    
   </head>
+
   <body>
-    <main class="slideshow">
-      <h1 hidden aria-hidden="false">Introducing Gauge</h1>
-
-      <section data-src="slides/title"></section>
-
-      <section>
-        <h2 aria-hidden="false">Instructions</h2>
-        <audio src="slides/instructions/audio.mp3"></audio>
-        <figure>
-          <table>
-            <tr>
-              <th>Keyboard Shortcut</th>
-              <th>Description</th>
-            </tr>
-
-            <tr>
-              <td>&rightarrow; or [space]</td>
-              <td>Next slide</td>
-            </tr>
-            <tr>
-              <td>&leftarrow;</td>
-              <td>Previous slide</td>
-            </tr>
-            <tr>
-              <td class="highlight">f</td>
-              <td><span class="highlight">F</span>ullscreen view (toggles on/off)</td>
-            </tr>
-            <tr>
-              <td class="highlight">t</td>
-              <td><span class="highlight">T</span>ranscript view (opens in separate window)</td>
-            </tr>
-            <tr>
-              <td class="highlight">p</td>
-              <td><span class="highlight">P</span>lay/pause audio for the current slide.</td>
-            </tr>
-            <tr>
-              <td class="highlight">a</td>
-              <td><span class="highlight">A</span>uto-play audio and advance to next slide. (toggles on/off)</td>
-            </tr>
-          </table>
-
-          <figcaption>
-            <p>
-              Here are some quick keyboard shortcuts to help you get around.
-              <ul>
-                <li>Press the right arrow or space bar to go to the next slide.</li>
-                <li>Press the left arrow to go to the previous slide.</li>
-                <li>Press 'f' to toggle full screen mode.</li>
-                <li>Press 't' to open the written transcripts in a separate window.</li>
-                <li>Press 'p' to play or pause audio for the current slide.</li>
-                <li>Press 'a' to autoplay audio and advance to the next slide.</li>
-              </ul>
-            </p>
-          </figcaption>
-        </figure>
-      </section>
-
-
-
-      <section class="theme-invert">
-        <h2 hidden aria-hidden="false">Biography</h2>
-        <audio src="slides/bio/audio.mp3"></audio>
-        <figure>
-          <img src="slides/bio/scott-davis-bio.png"
-               alt="Scott Davis' Biography"
-               class="contain">
-
-          <figcaption>
-           <p>Hi! My name is Scott Davis. I'm currently a Principle Engineer
-             with ThoughtWorks. Before that, I ran a software consultancy out
-             of Denver, Colorado called ThirstyHead. </p>
-
-           <p>I've been writing about web development for years -- articles
-             for IBM, books for O'Reilly and the Pragmatic Bookshelf, and most
-             recently videos for O'Reilly as well.</p>
-          </figcaption>
-        </figure>
-      </section>
-
-      <section>
-        <h2><a href="https://gauge.org/">https://gauge.org/</a></h2>
-        <audio src="slides/gauge/audio.mp3"></audio>
-        <figure>
-          <a href="https://gauge.org/">
-          <img src="slides/gauge/gauge-home.png"
-               alt="Gauge home page"
-               class="contain-with-header"
-               data-src="https://gauge.org/">
-          </a>
-
-          <figcaption>
-            <p>
-            Today, I'd like to talk to you about Gauge, a free and open source testing framework for acceptance testing.
-            </p>
-            <p>But before we get too far, I think that it's worthwhile to define some terms more clearly. You'll hear me call acceptance testing "User Journey testing", which I think is a better description of what we're trying to accomplish when we use Gauge. Either way, this kind of testing is significantly different than the kind of testing that you probably do today, if you're a typical front-end developer.</p>
-          </figcaption>
-        </figure>
-      </section>
-
-      <section class="theme-invert">
-        <h2 hidden aria-hidden="false">Frameworks and Unit Testing</h2>
-        <audio src="slides/web-framework-testing-libraries/audio.mp3"></audio>
-        <figure>
-          <img src="slides/web-framework-testing-libraries/web-framework-testing-libraries.png"
-               alt="Frameworks and Unit Testing"
-               class="contain">
-
-          <figcaption>
-            <p>Most modern web frameworks ship with their own unit testing library. If you're a fan of React, then you're probably intimately familiar with Jest. Angular developers use the baked-in library Jasmine to do their unit testing.
-            </p>
-          </figcaption>
-        </figure>
-      </section>
-
-      <section class="theme-invert">
-        <h2 hidden aria-hidden="false">The Test Pyramid</h2>
-        <audio src="slides/test-pyramid/audio.mp3"></audio>
-        <figure>
-          <a href="https://martinfowler.com/articles/practical-test-pyramid.html">
-          <img src="slides/test-pyramid/test-pyramid_1024px.png"
-               alt="The Test Pyramid"
-               class="contain"
-               data-src="https://martinfowler.com/articles/practical-test-pyramid.html">
-          </a>
-
-          <figcaption>
-            <p>
-            Unit tests are a crucial part of the quality equation. They form the foundation of the Test Pyramid. Since most web developers write their own code, these unit tests allow them to test their own code. They're typically fast to run and easy to write, since they are designed to run in isolation from the other, more complex parts of the application stack (like databases and web services).
-            </p>
-            <p>I often say that unit tests "test the bricks, not the building". After all, you can't trust the building if you don't trust the bricks.</p>
-            <p>As you move farther up the Test Pyramid, you move farther away from the source code, and get closer to the actual users of your application. (Keep this in mind when we begin talking about User Journey tests.) You add more pieces to the puzzle, and correspondingly add more places for your tests to fail.
-            </p>
-            <p>
-            If your organization doesn't have a solid testing or integration environment -- one that mirrors the production environment as closely as possible, and one that is trivial to set up and tear down repeatedly as you run your integration tests -- this is where testing can become less common. Not because the tests are less important, but sadly because they can be harder to run reliably.</p>
-          </figcaption>
-        </figure>
-      </section>
-
-
-      <section class="theme-invert">
-        <h2 hidden aria-hidden="false">Unit Testing</h2>
-        <audio src="slides/unit-test/audio.mp3"></audio>
-        <figure>
-          <a href="https://martinfowler.com/bliki/UnitTest.html">
-          <img src="slides/unit-test/unit-test.png"
-               alt="Unit Testing"
-               class="contain"
-               data-src="https://martinfowler.com/bliki/UnitTest.html">
-          </a>
-
-          <figcaption>
-            <p>I see a lot of unit tests out in the wild that may or may not truly be "unit" tests in the strictest sense of the word. Since any test is better than no test, I hesitate to criticize tests that might not be as isolated as I'd prefer in an ideal scenario.
-            </p>
-            <p>But here's one definition of a unit test that I hope that we can all agree on -- unit tests are for the benefit of the developer, not the user. As much as I'd love it, I've never had a user ask me how much code coverage I have for the website I'm demoing, or how many edge cases I've tested for null pointer exceptions. While users certainly benefit indirectly from a solid coverage of unit tests, I'd argue that developers are the most direct, primary beneficiaries of unit tests.</p>
-          </figcaption>
-        </figure>
-      </section>
-
-
-
-      <section class="theme-invert">
-        <h2 hidden aria-hidden="false">React Unit Testing</h2>
-        <audio src="slides/react-unit-test/audio.mp3"></audio>
-        <figure>
-          <a href="https://jestjs.io/docs/en/getting-started">
-          <img src="slides/react-unit-test/react-unit-test.png"
-               alt="React Unit Testing"
-               class="contain"
-               data-src="https://jestjs.io/docs/en/getting-started">
-          </a>
-
-          <figcaption>
-            <p>Here's an example of what I'm talking about. If you write a custom 'sum' function in React, you've almost certainly got a corresponding unit test to make sure that your custom function accurately does what it promises to do. Notice that this 'sum' function is completely isolated from the web view that the user can see, or even some higher level function of yours that depends on the fact that 1 plus 2 does, in fact, equal 3.
-            </p>
-          </figcaption>
-        </figure>
-      </section>
-
-      <section class="theme-invert">
-        <h2 hidden aria-hidden="false">Angular Unit Testing</h2>
-        <audio src="slides/angular-unit-test/audio.mp3"></audio>
-        <figure>
-          <a href="https://angular.io/guide/testing#component-test-basics">
-          <img src="slides/angular-unit-test/angular-unit-test.png"
-               alt="Angular Unit Testing"
-               class="contain"
-               data-src="https://angular.io/guide/testing#component-test-basics">
-          </a>
-
-          <figcaption>
-            <p>Here's another, slightly more realistic example in Angular. The developer has created a 'Lightswitch' component, and like all good responsible developers do, they have created a corresponding set of unit tests to test this component in isolation.
-            </p>
-            <p>From the end user's perspective, they are ticking a 'use default shipping address' widget on screen, or 'bill to credit card on file'. They most definitely benefit from having a well-behaved Lightswitch component, but when you look at the tests, it's pretty clear that they were written for the benefit of the next developer who comes along and stumbles into this part of the codebase, not the end user who will actually be interacting with the Lightswitch directly.</p>
-          </figcaption>
-        </figure>
-      </section>
-
-
-      <section>
-        <h2><a href="https://gauge.org/">https://gauge.org/</a></h2>
-        <audio src="slides/gauge-2/audio.mp3"></audio>
-        <figure>
-          <a href="https://gauge.org/">
-          <img src="slides/gauge/gauge-home.png"
-               alt="Gauge home page"
-               class="contain-with-header"
-               data-src="https://gauge.org/">
-          </a>
-
-          <figcaption>
-            <p>So, remember Gauge? That was the whole reason we started having this conversation in the first place, right?
-            </p>
-            <p>Now that we have a better understanding of what unit tests are and who they are written for, let me say this: Gauge DOES NOT replace your current unit testing library of choice. Gauge is for writing user-focused tests, not developer-focused tests. Gauge is for writing User Journey tests.
-            </p>
-          </figcaption>
-        </figure>
-      </section>
-
-      <section class="theme-invert">
-        <h2 hidden aria-hidden="false">User Journey Test</h2>
-        <audio src="slides/user-journey-test/audio.mp3"></audio>
-        <figure>
-          <a href="https://martinfowler.com/bliki/UserJourneyTest.html">
-          <img src="slides/user-journey-test/user-journey-test.png"
-               alt="User Journey Test"
-               class="contain"
-               data-src="https://martinfowler.com/bliki/UserJourneyTest.html">
-          </a>
-
-          <figcaption>
-            <p>User Journey tests are written in the language of the end user, not in the language of the developer (either programming or spoken). Users typically say things like, "I'd like to add tomatoes to my shopping cart", not "I'd like to add the UPC string of the selected item to that array of strings over there in the Cart component."
-            </p>
-            <p>Now, while literal-minded developers might scoff and think, "Meh, as long as the functionality gets tested, does the language of the test really matter?"</p>
-            <p>Here's the deal: it does. It really does, especially when we're talking about User Journey tests. You can call them "acceptance" tests, because what we're trying to figure out is what an "acceptable" website looks like to the user -- Is it acceptable if you can't add items to a cart? Is it acceptable if you can't check out and actually purchase the items?</p>
-            <p>So by calling these tests User Journey tests, it brings the user back into forefront the conversation. The tests are written in the user's language. The acceptance of the finished project is ultimately up to the user, not the developer.</p>
-          </figcaption>
-        </figure>
-      </section>
-
-      <section class="theme-invert">
-        <h2 hidden aria-hidden="false">Design Thinking Starts with Empathy</h2>
-        <audio src="slides/design-thinking/audio.mp3"></audio>
-        <figure>
-          <a href="https://www.interaction-design.org/literature/article/stage-1-in-the-design-thinking-process-empathise-with-your-users">
-          <img src="slides/design-thinking/design-thinking-empathy.png"
-               alt="Design Thinking starts with empathy."
-               class="contain"
-               data-src="https://www.interaction-design.org/literature/article/stage-1-in-the-design-thinking-process-empathise-with-your-users">
-          </a>
-
-          <figcaption>
-            <p>
-              If you ask a typical developer what step #1 of a new project is, chances are good that they'll say something like, "Pick a web framework" or "Set up a new code repository".
-            </p>
-            <p>If you ask a fan of Design Thinking what step #1 of a new project is, they'll say, "Empathy". Putting yourself in the mindset of the user. Understanding what they want to accomplish when they use your app. </p>
-            <p>Because if you start writing tests in the language of the user, it helps you think like a user. And then, it opens up creativity in an entirely different part of your brain. "Hmmm, if I buy tomatoes every week, wouldn't it be cool if I could just re-purchase last week's shopping cart full of the food I normally buy?" "I'm already uploading a pre-written shopping list to my cart for my automated unit tests -- I wonder if it would make my users lives easier if they could do the same thing?"</p>
-          </figcaption>
-        </figure>
-      </section>
-
-      <section>
-        <h2 hidden aria-hidden="false">GroceryWorks</h2>
-        <audio src="slides/groceryworks/audio.mp3"></audio>
-        <figure>
-          <a href="https://thirstyhead.com/groceryworks">https://thirstyhead.com/grocery
-            works</a>
-          <a href="https://thirstyhead.com/groceryworks">
-          <img src="slides/groceryworks/groceryworks.png"
-               alt="GroceryWorks"
-               class="contain"
-               data-src="https://thirstyhead.com/groceryworks">
-          </a>
-
-          <figcaption>
-            <p>So, here's a website for a fictional grocery store called GroceryWorks. As you click around, you'll see that tapping the categories on the left show you different types of food items -- beans, nuts, pasta, produce, and so on. Clicking on a food item adds it to the cart on the right. Clicking on the food item again removes it from the cart. Clicking 'Purchase' allows you to place your order or cancel it.
-            </p>
-          </figcaption>
-        </figure>
-      </section>
-
-
-
-      <section>
-        <h2 hidden aria-hidden="false">Gauge Specs</h2>
-        <audio src="slides/gauge-specs/audio.mp3"></audio>
-        <figure>
-          <a href="https://gauge.org/">
-          <img src="slides/gauge-specs/gauge-specs.png"
-               alt="Gauge Specs"
-               class="contain"
-               data-src="https://gauge.org/">
-          </a>
-
-          <figcaption>
-            <p>User Journey tests in Gauge are comprised of two complementary parts -- Specifications, written in Markdown; and Tests, written in the programming language of your choice. (More on that in just a moment...)
-            </p>
-
-            <p>
-              Markdown is basically plain text with some simple decorators like hashes for headers (which represent the name of your specs) and asterisks for bullet items (which represent the individual steps to take). Markdown gives you the flexibility to express the steps in exactly the language your end user uses to describe them.
-            </p>
-          </figcaption>
-        </figure>
-      </section>
-
-      <section>
-        <h2 hidden aria-hidden="false">Gauge Impls</h2>
-        <audio src="slides/gauge-impl/audio.mp3"></audio>
-        <figure>
-          <a href="https://gauge.org/">
-          <img src="slides/gauge-impl/gauge-impl.png"
-               alt="Gauge Impls"
-               class="contain"
-               data-src="https://gauge.org/">
-          </a>
-
-          <figcaption>
-            <p>You can implement your tests in a variety of popular programming languages: JavaScript, C#, Java, Python, or Ruby. What you're seeing here are the tests implemented in a JavaScript library written by ThoughtWorks called Taiko. I'm really impressed with it -- look how light and readable the syntax is.
-            </p>
-            <p>What you've probably figured out already is that each step in JavaScript finds its corresponding step in Markdown by doing a simple string comparison. Simplicity is the best kind of cleverness, wouldn't you say?</p>
-          </figcaption>
-        </figure>
-      </section>
-
-      <section>
-        <h2 hidden aria-hidden="false">Gauge Report</h2>
-        <audio src="slides/gauge-report/audio.mp3"></audio>
-        <figure>
-            <img src="slides/gauge-report/gauge-report.png"
-               alt="Gauge Report"
-               class="contain"
-               data-src="https://gauge.org/">
-          <figcaption>
-            <p>When you run your tests, you end up with a nice-looking report that tells you how many of your specifications passed, and if they failed, which steps caused them to fail.
-            </p>
-          </figcaption>
-        </figure>
-      </section>
-
-
-
-
-
-
-
-      <section class="section-title">
-        <h2><span class="highlight">Conclusion</span></h2>
-        <audio src="slides/conclusion/audio.mp3"></audio>
-        <figure>
-          <figcaption>
-            <p>
-              So, what have we learned?
-            </p>
-          </figcaption>
-        </figure>
-      </section>
-
-
-
-      <section class="theme-invert">
-        <h2 hidden aria-hidden="false">Frameworks and Unit Testing</h2>
-        <audio src="slides/web-framework-testing-libraries-2/audio.mp3"></audio>
-        <figure>
-          <img src="slides/web-framework-testing-libraries/web-framework-testing-libraries.png"
-               alt="Frameworks and Unit Testing"
-               class="contain">
-
-          <figcaption>
-            <p>
-            Unit testing libraries are still a key part of any responsible developer's toolkit. We want you to continue to use the library of your choice. Gauge doesn't have an opinion on what unit testing library you use, because Gauge is for writing an entirely different category of tests.
-            </p>
-          </figcaption>
-        </figure>
-      </section>
-
-      <section class="theme-invert">
-        <h2 hidden aria-hidden="false">Design Thinking Starts with Empathy</h2>
-        <audio src="slides/design-thinking-2/audio.mp3"></audio>
-        <figure>
-          <a href="https://www.interaction-design.org/literature/article/stage-1-in-the-design-thinking-process-empathise-with-your-users">
-          <img src="slides/design-thinking/design-thinking-empathy.png"
-               alt="Design Thinking starts with empathy."
-               class="contain"
-               data-src="https://www.interaction-design.org/literature/article/stage-1-in-the-design-thinking-process-empathise-with-your-users">
-          </a>
-
-          <figcaption>
-            <p>
-            Gauge wants your step #1 to be empathy. Gauge wants you to think like a user, because they are the ones who will ultimately decide if your web app is acceptable or not.
-            </p>
-          </figcaption>
-        </figure>
-      </section>
-
-      <section>
-        <h2><a href="https://gauge.org/">https://gauge.org/</a></h2>
-        <audio src="slides/gauge-3/audio.mp3"></audio>
-        <figure>
-          <a href="https://gauge.org/">
-          <img src="slides/gauge/gauge-home.png"
-               alt="Gauge home page"
-               class="contain-with-header"
-               data-src="https://gauge.org/">
-          </a>
-
-          <figcaption>
-            <p>Gauge is for writing User Journey tests. Capture the words your end users use, and the steps they take, in plain English Markdown files. Implement the tests in the language of your choice. Show them easy-to-read reports, proving to them that your web app does exactly what they ask it to do.
-            </p>
-            <p>If you're already writing unit tests, this is your chance to level up and start thinking like a user instead of a developer. Are you up to the challenge?</p>
-          </figcaption>
-        </figure>
-      </section>
-
-      <section>
-        <h2>Resources</h2>
-        <audio src="slides/resources/audio.mp3"></audio>
-        <figure>
-          <table>
-            <tr>
-              <td colspan="2"><a href="https://thirstyhead.com/introducing-gauge">
-                  https://thirstyhead.com/introducing-gauge</a></td>
-            </tr>
-            <tr>
-              <td>&nbsp;</td>
-              <td class="highlight">This slideshow</td>
-            </tr>
-            <tr>
-              <td colspan="2"><a href="https://thirstyhead.com/groceryworks">
-                  https://thirstyhead.com/groceryworks</a></td>
-            </tr>
-            <tr>
-              <td>&nbsp;</td>
-              <td class="highlight">GroceryWorks: a website for a fictional grocery store</td>
-            </tr>
-            <tr>
-              <td colspan="2"><a href="https://github.com/thirstyhead/groceryworks">
-                  https://github.com/thirstyhead/groceryworks</a></td>
-            </tr>
-            <tr>
-              <td>&nbsp;</td>
-              <td class="highlight">Source code for GroceryWorks</td>
-            </tr>
-            <tr>
-              <td colspan="2"><a href="https://github.com/thirstyhead/groceryworks-test">
-                  https://github.com/thirstyhead/groceryworks-test</a></td>
-            </tr>
-            <tr>
-              <td>&nbsp;</td>
-              <td class="highlight">Source code for Gauge and Taiko User Journey tests for GroceryWorks</td>
-            </tr>
-          </table>
-          <figcaption>
-            <p>Here are links to this slideshow and the source code to GroceryWorks, as well as the associated Gauge and Taiko User Journey tests.</p>
-          </figcaption>
-        </figure>
-      </section>
-
-
-
-
-
-
-      <section class="main-title">
-        <h2 hidden aria-hidden="false">Introducing Gauge</h2>
-        <audio src="slides/title-2/audio.mp3"></audio>
-        <figure>
-          <div class="banner">
-            Introducing Gauge
-            <div class="subtitle">
-              A Framework for User Journey Testing
-            </div>
-            <div class="bio">
-              <br>
-              Scott Davis<br>
-              <a href="mailto:scott.davis@thoughtworks.com">scott.davis@thoughtworks.com</a><br>
-              <a href="https://twitter.com/scottdavis99">@scottdavis99</a>
-            </div>
-          </div>
-          <figcaption>
-            <p>I hope that you've enjoyed getting a brief glimpse of what Gauge and Taiko add to your testing toolkit. Thanks for your time!
-            </p>
-            <p>
-              Presented by Scott Davis. His email address is
-              scott.davis@thoughtworks.com. His Twitter handle is @scottdavis99.
-            </p>
-          </figcaption>
-        </figure>
-      </section>
-
-
-
-
-
-    </main>
-
-    <script src="js/talk-o-vision.js"></script>
+    <article>
+    <h1>Introducing Gauge: A Framework for User Journey Testing</h1>
+    <img src="gauge.png" alt="">
+    <p>Most web developers today are familiar with the idea of unit tests. (Some developers even write them!) Unit testing libraries like Jest and Jasmine ship standard with most modern web frameworks.
+</p>
+    <p>In this talk, Scott Davis (Principal Engineer, ThoughtWorks) introduces a wholly different kind of testing -- User Journey testing. User Journey tests are written in the language of the user, not the developer. ("I'd like to add tomatoes to my shopping cart", not "I'd like to add the UPC string of the selected item to that array of Strings over there in that CartComponent.") Gauge and Taiko -- both free and open source -- allow you to level up your testing skills and start thinking like a user. Are you up to the challenge?
+</p>
+
+<h2>View Slideshow</h2>
+<ul>
+  <li><a href="slides/en-us/index-src.html">English (en-us)</a></li>
+  <li><a href="slides/zh-cn/index-src.html">Chinese (zh-cn)</a></li>
+</ul>
+
+  </article>
   </body>
 </html>
