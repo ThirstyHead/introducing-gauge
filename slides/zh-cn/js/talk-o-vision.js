@@ -49,12 +49,12 @@ class Slides{
             // set attributes
             newSlide.setAttribute('id', slide.getAttribute('id'));
             newSlide.dataset.src = slide.dataset.src;
-            // fix img src
-            let imgList = newSlide.querySelectorAll('img');
-            for(let j=0; j<imgList.length; j++){
-              let img = imgList[j];
-              let originalSrc = img.getAttribute('src');
-              img.setAttribute('src', `${slide.dataset.src}/${originalSrc}`);
+            // fix img, audio src
+            let srcList = newSlide.querySelectorAll('img, audio');
+            for(let j=0; j<srcList.length; j++){
+              let element = srcList[j];
+              let originalSrc = element.getAttribute('src');
+              element.setAttribute('src', `${slide.dataset.src}/${originalSrc}`);
             }
             let parent = slide.parentNode;
             parent.replaceChild(newSlide, slide);
