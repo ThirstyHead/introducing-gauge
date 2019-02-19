@@ -43,11 +43,15 @@ class Slides{
           })
           .then( (text) => {
             let htmlFragment = parser.parseFromString(text, 'text/html');
+            let baseElement = document.createElement('base');
+            baseElement.setAttribute('href', slide.dataset.src);
+            htmlFragment.querySelector('body').appendChild(baseElement);
+            console.log(htmlFragment);
             let newSlide = htmlFragment.querySelector('section');
             newSlide.setAttribute('id', slide.getAttribute('id'));
             newSlide.dataset.src = slide.dataset.src;
             let parent = slide.parentNode;
-            parent.replaceChild(newSlide, slide);
+            // parent.replaceChild(newSlide, slide);
           });
       }
     }
