@@ -19,8 +19,8 @@ class Slides{
     */
   constructor(){
     this.list = document.querySelectorAll(".slideshow > section");
-    this.importSlides();
     this.addNumberToSlides();
+    this.importSlides();
     window.addEventListener('keydown', evt => this.keyHandler(evt));
     window.addEventListener('hashchange', evt => this.hashchangeHandler(evt));
     window.addEventListener('message', evt => this.messageHandler(evt));
@@ -32,9 +32,26 @@ class Slides{
    * Imports individual slides into this slideshow
    */
   importSlides(){
-    let slide = this.list[0];
-    console.log(slide.dataset.src);
-  }
+    let parser = new DOMParser();
+
+    for(let i=0; i<this.list.length; i++){
+      let slide = this.list[i];
+      if(slide.innerHTML === ''){
+        fetch(slide.dataset.src)
+          .then( (response) => {
+            return response.text();
+          })
+          .then( (text) => {
+            let htmlFragment = parser.parseFromString(text, 'text/html');
+            let newSlide = htmlFragment.querySelector('section');
+            newSlide.setAttribute('id', slide.getAttribute('id'));
+            newSlide.dataset.src = slide.dataset.src;
+            let parent = slide.parentNode;
+            parent.replaceChild(newSlide, slide);
+          });
+      }
+    }
+ }
 
 
   /**
