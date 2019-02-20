@@ -43,13 +43,18 @@ class Slides{
     let parts = href.split('/');
     parts.pop();
     href = parts.join('/');
+    // href.replace('http', 'https');
+    console.log(href);
+    console.log(`location.protocol: ${location.protocol}`);
 
     for(let i=0; i<this.list.length; i++){
       let slide = this.list[i];
       
       if(slide.innerHTML === ''){
         importCount++;
-        fetch(`${href}/${slide.dataset.src}`)
+        let fetchUrl = `${href}/${slide.dataset.src}`;
+        console.log(fetchUrl);
+        fetch(fetchUrl)
           .then( (response) => {
             return response.text();
           })

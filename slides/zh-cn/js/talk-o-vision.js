@@ -43,6 +43,7 @@ class Slides{
     let parts = href.split('/');
     parts.pop();
     href = parts.join('/');
+    href.replace('http', 'https');
 
     for(let i=0; i<this.list.length; i++){
       let slide = this.list[i];
