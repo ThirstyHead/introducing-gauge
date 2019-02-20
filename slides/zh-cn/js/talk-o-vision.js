@@ -35,11 +35,21 @@ class Slides{
     let parser = new DOMParser();
     let importCount = 0;
 
+    // Fetch is defaulting to http instead of https,
+    // despite location.protocol being https.
+    // This causes a mixed content error and slides
+    // fail to load. #sigh
+    let href = window.location.href;
+    let parts = href.split('/');
+    parts.pop();
+    href = parts.join('/');
+
     for(let i=0; i<this.list.length; i++){
       let slide = this.list[i];
+      
       if(slide.innerHTML === ''){
         importCount++;
-        fetch(slide.dataset.src)
+        fetch(`${href}/${slide.dataset.src}`)
           .then( (response) => {
             return response.text();
           })
