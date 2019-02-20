@@ -43,14 +43,14 @@ class Slides{
     let parts = href.split('/');
     parts.pop();
     href = parts.join('/');
-    href.replace('http', 'https');
 
     for(let i=0; i<this.list.length; i++){
       let slide = this.list[i];
       
       if(slide.innerHTML === ''){
         importCount++;
-        fetch(`${href}/${slide.dataset.src}`)
+        let fetchUrl = `${href}/${slide.dataset.src}`;
+        fetch(fetchUrl)
           .then( (response) => {
             return response.text();
           })
@@ -65,7 +65,7 @@ class Slides{
             for(let j=0; j<srcList.length; j++){
               let element = srcList[j];
               let originalSrc = element.getAttribute('src');
-              element.setAttribute('src', `${slide.dataset.src}/${originalSrc}`);
+              element.setAttribute('src', `${fetchUrl}/${originalSrc}`);
             }
             let parent = slide.parentNode;
             parent.replaceChild(newSlide, slide);
