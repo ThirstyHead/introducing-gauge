@@ -69,7 +69,7 @@ class Slides{
             for(let j=0; j<srcList.length; j++){
               let element = srcList[j];
               let originalSrc = element.getAttribute('src');
-              element.setAttribute('src', `${slide.dataset.src}/${originalSrc}`);
+              element.setAttribute('src', `${fetchUrl}/${originalSrc}`);
             }
             let parent = slide.parentNode;
             parent.replaceChild(newSlide, slide);
