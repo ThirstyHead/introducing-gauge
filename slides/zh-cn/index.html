@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <title>Introducing Gauge</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,
+                                   initial-scale=1,
+                                   user-scalable=yes">
+    <meta name="author" content="Scott Davis <scott.davis@thoughtworks.com>">
+    <meta name="description" content="Introducing Gauge">
+    <meta name="keywords" content="ThoughtWorks, Gauge, testing, user journey, fitness function">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/talk-o-vision.css">
+
+    <style>
+      .main-title{
+        background: url('slides/title/gauge.png') no-repeat center center;
+        background-size: contain;
+      }
+
+      .banner{
+        background-color: var(--theme-foreground-color);
+        opacity: 0.9;
+        top: 45vh;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 hidden="" aria-hidden="false">Introducing Gauge</h1>
+    <main class="slideshow">
+      <section class="main-title" id="1" data-src="slides/title">
+  <h2 hidden="" aria-hidden="false">Gauge</h2>
+  <figure>
+    <div class="banner">
+      Gauge
+      <div class="subtitle">
+        用户体验测试框架
+      </div>
+      <div class="bio">
+        <br>
+        Scott Davis<br>
+        <a href="mailto:scott.davis@thoughtworks.com">scott.davis@thoughtworks.com</a><br>
+        <a href="https://twitter.com/scottdavis99">@scottdavis99</a>
+      </div>
+    </div>
+    <figcaption>
+      <p>
+        Gauge，用户体验测试框架。
+      </p>
+      <p>
+        演讲者：Scott Davis。邮箱：scott.davis@thoughtworks.com. Twitter：@scottdavis99。
+      </p>
+    </figcaption>
+  </figure>
+</section>
+      <section id="2" data-src="slides/instructions">
+  <h2 aria-hidden="false">使用介绍</h2>
+  <figure>
+    <table>
+      <tbody><tr>
+        <th>快捷键</th>
+        <th>功能</th>
+      </tr>
+
+      <tr>
+        <td>→ 或 [空格]</td>
+        <td>下一张幻灯片</td>
+      </tr>
+      <tr>
+        <td>←</td>
+        <td>前一张幻灯片</td>
+      </tr>
+      <tr>
+        <td class="highlight">f</td>
+        <td>全屏视图（开/关）</td>
+      </tr>
+      <tr>
+        <td class="highlight">t</td>
+        <td>演讲字幕（新窗口打开）</td>
+      </tr>
+      <tr>
+        <td class="highlight">p</td>
+        <td>播放/暂停当前幻灯片的演讲音频</td>
+      </tr>
+      <tr>
+        <td class="highlight">a</td>
+        <td>自动播放音频并在结束后进入下一张幻灯片（开/关）</td>
+      </tr>
+    </tbody></table>
+
+    <figcaption>
+      <p>
+        下面这些快捷键可以帮您更好的使用此演讲：
+      </p><ul>
+        <li>按“右”或“空格”键跳到下一张幻灯片。</li>
+        <li>按“左”键跳到前一张幻灯片。</li>
+        <li>按“f”切换全屏模式。</li>
+        <li>按“t”在新窗口打开演讲字幕。</li>
+        <li>按“p”播放或暂停当前幻灯片的演讲音频。</li>
+        <li>按“a”自动播放音频并在结束后进入下一张幻灯片</li>
+      </ul>
+      <p></p>
+    </figcaption>
+  </figure>
+</section>
+      <section class="theme-invert" id="3" data-src="slides/bio">
+  <h2 hidden="" aria-hidden="false">演讲者简介</h2>
+  <figure>
+    <img src="slides/bio/scott-davis-bio.png" alt="Scott Davis 简介" class="contain">
+
+    <figcaption>
+      <p>大家好！我叫Scott Davis。我现在是ThoughtWorks的首席工程师。在此之前，我在科罗拉多州丹佛市经营一家名为ThirstyHead的软件咨询公司。</p>
+
+      <p>我多年来一直在撰写有关Web开发的文章：比如发表在IBM的文章，出版在O'Reilly和Pragmatic Bookshelf的书籍，以及最近在O'Reilly的视频。</p>
+    </figcaption>
+  </figure>
+</section>
+      <section id="4" data-src="slides/gauge">
+  <h2><a href="https://gauge.org/">https://gauge.org/</a></h2>
+  <figure>
+    <a href="https://gauge.org/">
+      <img src="slides/gauge/gauge-home.png" alt="Gauge 主页" class="contain-with-header" data-src="https://gauge.org/">
+    </a>
+
+    <figcaption>
+      <p>今天，我想和大家谈谈Gauge，一个免费、开源的验收测试框架。</p>
+      <p>但在这之前，我认为有必要更清晰地定义一些术语。您会听到我将验收测试称为“用户体验测试”，我认为这是对我们使用Gauge想达成的目标的更好的描述。无论如何，如果您是典型的前端开发人员，这种测试将与您现在使用或编写的测试有很大的不同。</p>
+    </figcaption>
+  </figure>
+</section>
+      <section class="theme-invert" id="5" data-src="slides/web-framework-testing-libraries">
+  <h2 hidden="" aria-hidden="false">框架和单元测试</h2>
+  <figure>
+    <img src="slides/web-framework-testing-libraries/web-framework-testing-libraries.png" alt="框架和单元测试" class="contain">
+
+    <figcaption>
+      <p>大多数现代Web框架都附带了自己的单元测试库。如果您是React的拥趸，那么您可能非常熟悉Jest。Angular开发人员使用自带的库Jasmine进行单元测试。</p>
+    </figcaption>
+  </figure>
+</section>
+      <section class="theme-invert" id="6" data-src="slides/test-pyramid">
+  <h2 hidden="" aria-hidden="false">测试金字塔</h2>
+  <figure>
+    <a href="https://martinfowler.com/articles/practical-test-pyramid.html">
+      <img src="slides/test-pyramid/test-pyramid_1024px.png" alt="测试金字塔" class="contain" data-src="https://martinfowler.com/articles/practical-test-pyramid.html">
+    </a>
+
+    <figcaption>
+      <p>
+        单元测试是质量等式的关键部分。它们构成了测试金字塔的基础。由于大多数Web开发人员自己编写代码，因此这些单元测试允许他们测试自己的代码。它们通常运行速度快且易于编写，因为它们旨在与应用程序的其他更复杂的部分（如数据库和Web服务）隔离运行。
+      </p>
+      <p>我经常说单元测试是在“测试砖块，而不是建筑”。毕竟，如果您不相信砖块，您就不能相信建筑。</p>
+      <p>测试金字塔越往上，您将越远离源代码，并更接近应用程序的实际用户。（当我们开始讨论用户体验测试时，请记住这一点。）您往里面加入的功能越多，那么相应地，测试会失败的地方也就更多。
+      </p>
+      <p>
+        如果您的组织没有可靠的测试或集成环境（前者是尽可能与生产环境一致的环境，后者是在运行集成测试时很容易反复搭建和删除的环境），那么测试会变得越来越少。并不是因为测试不重要，但很遗憾，这是因为它们更难可靠地运行。</p>
+    </figcaption>
+  </figure>
+</section>
+      <section class="theme-invert" id="7" data-src="slides/unit-test">
+  <h2 hidden="" aria-hidden="false">单元测试</h2>
+  <figure>
+    <a href="https://martinfowler.com/bliki/UnitTest.html">
+      <img src="slides/unit-test/unit-test.png" alt="单元测试" class="contain" data-src="https://martinfowler.com/bliki/UnitTest.html">
+    </a>
+
+    <figcaption>
+      <p>我见过太多单元测试可能或多或少并不是最严格意义上的“单元”测试。由于任何测试都比没有测试好，我不愿意批评那些并不像我希望的（在理想情况下）那样隔离的测试。</p>
+      <p>但我希望我们能对单元测试的定义达成共识：单元测试是为开发人员而不是用户编写的。从来没有一个用户问我正在演示的网站代码覆盖率有多少（尽管我希望如此），或者我为空指针异常测试了多少边界情况。虽然用户肯定会从有可靠覆盖率的单元测试中间接受益，但我认为开发人员是单元测试最直接、最主要的受益者。</p>
+    </figcaption>
+  </figure>
+</section>
+      <section class="theme-invert" id="8" data-src="slides/react-unit-test">
+  <h2 hidden="" aria-hidden="false">React 单元测试</h2>
+  <figure>
+    <a href="https://jestjs.io/docs/en/getting-started">
+      <img src="slides/react-unit-test/react-unit-test.png" alt="React 单元测试" class="contain" data-src="https://jestjs.io/docs/en/getting-started">
+    </a>
+
+    <figcaption>
+      <p>这就是我说的一个例子。如果您在React中编写一个自定义的“sum”函数，您几乎肯定有一个相应的单元测试来确保您的自定义函数能够准确地完成它所承诺的功能。请注意，这个“sum”函数与用户可以看到的Web视图完全隔离，甚至与您的其他依赖于“1加2等于3”的函数隔离。
+      </p>
+    </figcaption>
+  </figure>
+</section>
+      <section class="theme-invert" id="9" data-src="slides/angular-unit-test">
+  <h2 hidden="" aria-hidden="false">Angular 单元测试</h2>
+  <figure>
+    <a href="https://angular.io/guide/testing#component-test-basics">
+      <img src="slides/angular-unit-test/angular-unit-test.png" alt="Angular 单元测试" class="contain" data-src="https://angular.io/guide/testing#component-test-basics">
+    </a>
+
+    <figcaption>
+      <p>这是Angular中另一个稍微更实际一点的例子。开发人员创建了一个“Lightswitch”组件（component），并像所有负责任的开发人员一样，他们创建了一组相应的单元测试来单独测试这个组件。
+      </p>
+      <p>从最终用户的角度来看，当他们勾选屏幕上“使用默认送货地址”的小组件（widget），或者“使用保存的信用卡付款”时，他们肯定会受益于一个表现良好的Lightswitch组件，但是这些测试很明显是为了下一个接触到这部分代码库的开发人员编写的，而不是实际上直接与Lightswitch交互的用户。</p>
+    </figcaption>
+  </figure>
+</section>
+      <section id="10" data-src="slides/gauge-2">
+  <h2><a href="https://gauge.org/">https://gauge.org/</a></h2>
+  <figure>
+    <a href="https://gauge.org/">
+      <img src="slides/gauge-2/gauge-home.png" alt="Gauge 主页" class="contain-with-header" data-src="https://gauge.org/">
+    </a>
+
+    <figcaption>
+      <p>那么，还记得Gauge吗？这就是我们首先开始这段对话的原因，对吧？</p>
+      <p>现在我们已经对什么是单元测试以及它们编写的对象有了更好地了解。可以这样说：Gauge不会替换您当前选择的单元测试库。Gauge是用于编写以用户为中心的测试的，而不是以开发人员为中心的测试。Gauge用于编写用户体验测试。
+      </p>
+    </figcaption>
+  </figure>
+</section>
+      <section class="theme-invert" id="11" data-src="slides/user-journey-test">
+  <h2 hidden="" aria-hidden="false">用户体验测试</h2>
+  <figure>
+    <a href="https://martinfowler.com/bliki/UserJourneyTest.html">
+      <img src="slides/user-journey-test/user-journey-test.png" alt="用户体验测试" class="contain" data-src="https://martinfowler.com/bliki/UserJourneyTest.html">
+    </a>
+
+    <figcaption>
+      <p>用户体验测试使用最终用户的语言编写，而不是使用开发人员的语言（无论是程序语言还是口语）。用户通常会说“我想将西红柿添加到我的购物车”，而不是“我想将所选项目的UPC字符串添加到Cart组件中的那个字符串数组中。”
+      </p>
+      <p>虽然可能有些只会从字面意义去思考的开发人员会嗤之以鼻地想，“嗯，只要测试了相应的功能，测试的语言真的重要吗？”</p>
+      <p>事实是：它确实如此，尤其是当我们谈到用户体验测试时。您可以将它们称为“验收”测试，因为我们想要弄清楚的是对用户来说“可接受的”网站是什么样的：如果您不能将商品添加到购物车，这可以接受吗？如果您无法提交订单并实际购买物品，这可以接受吗？</p>
+      <p>因此，通过将这些测试称为“用户体验测试”，它将用户带回到对话的第一线。测试使用用户的语言编写。完成项目的验收最终取决于用户，而不是开发人员。</p>
+    </figcaption>
+  </figure>
+</section>
+      <section class="theme-invert" id="12" data-src="slides/design-thinking">
+  <h2 hidden="" aria-hidden="false">设计思维始于同理心</h2>
+  <figure>
+    <a href="https://www.interaction-design.org/literature/article/stage-1-in-the-design-thinking-process-empathise-with-your-users">
+      <img src="slides/design-thinking/design-thinking-empathy.png" alt="设计思维始于同理心" class="contain" data-src="https://www.interaction-design.org/literature/article/stage-1-in-the-design-thinking-process-empathise-with-your-users">
+    </a>
+
+    <figcaption>
+      <p>
+        如果您向一个典型的开发人员询问新项目的第一步是什么，那么他们很可能会说“选择一个Web框架”或“设置一个新的代码库”。
+      </p>
+      <p>如果您问设计思维的拥趸，新项目的第一步是什么，他们会说“移情”。把自己置身于用户的心态，了解他们在使用您的应用时想要完成的任务。</p>
+      <p>因为如果您开始用用户的语言编写测试，它会帮助您像用户一样思考。然后，它在您大脑的一个完全不同的部分开辟了创造力。“嗯，如果我每周都买西红柿，那我要是可以重新购买上周那个装满我常买的食物的购物车，那会不会很酷？”，“我已经将预先编写的购物清单上传到我的购物车中进行自动化单元测试 - 我想如果用户可以做同样的事情的话，他们的生活是不是会更轻松一些？”</p>
+    </figcaption>
+  </figure>
+</section>
+      <section id="13" data-src="slides/groceryworks">
+  <h2 hidden="" aria-hidden="false">GroceryWorks</h2>
+  <figure>
+    <a href="https://thirstyhead.com/groceryworks">https://thirstyhead.com/grocery
+      works</a>
+    <a href="https://thirstyhead.com/groceryworks">
+      <img src="slides/groceryworks/groceryworks.png" alt="GroceryWorks" class="contain" data-src="https://thirstyhead.com/groceryworks">
+    </a>
+
+    <figcaption>
+      <p>这是一个名为GroceryWorks的虚构杂货店的网站。当您点击时，您会看到点击左侧的类别会显示不同类型的食物——豆类，坚果，意大利面，农产品等。点击食物将其添加到右侧的购物车中。再次点击食品将其从购物车中移除。点击“购买”可以下订单或取消订单。
+      </p>
+    </figcaption>
+  </figure>
+</section>
+      <section id="14" data-src="slides/gauge-specs">
+  <h2 hidden="" aria-hidden="false">Gauge Specs</h2>
+  <figure>
+    <a href="https://gauge.org/">
+      <img src="slides/gauge-specs/gauge-specs.png" alt="Gauge Specs" class="contain" data-src="https://gauge.org/">
+    </a>
+
+    <figcaption>
+      <p>Gauge中的用户体验测试由两个互补的部分组成：规范（Specification），用Markdown编写; 和测试，用您选择的编程语言编写。（稍等一下......）
+      </p>
+
+      <p>
+        Markdown基本上是带有一些简单样式的纯文本，比如用带“#”号的标题（代表规范的名称）和带星号的列表（代表要采取的各个步骤）。Markdown使您可以灵活地用最终用户的语言来描述步骤。
+      </p>
+    </figcaption>
+  </figure>
+</section>
+      <section id="15" data-src="slides/gauge-impl">
+  <h2 hidden="" aria-hidden="false">Gauge 实现</h2>
+  <figure>
+    <a href="https://gauge.org/">
+      <img src="slides/gauge-impl/gauge-impl.png" alt="Gauge 实现" class="contain" data-src="https://gauge.org/">
+    </a>
+
+    <figcaption>
+      <p>您可以使用各种流行的编程语言来实现测试：JavaScript，C＃，Java，Python或Ruby。您在这里看到的是用由ThoughtWorks开发的名为Taiko的JavaScript库实现的测试。我对它印象非常深刻——看看这个语法有多轻量并且可读。
+      </p>
+      <p>您可能已经想到了，JavaScript中的每一步都通过执行简单的字符串比较在Markdown中找到相应的步骤。简单的就是聪明的，不是吗？</p>
+    </figcaption>
+  </figure>
+</section>
+      <section id="16" data-src="slides/gauge-report">
+  <h2 hidden="" aria-hidden="false">Gauge 报告</h2>
+  <figure>
+    <img src="slides/gauge-report/gauge-report.png" alt="Gauge 报告" class="contain" data-src="https://gauge.org/">
+    <figcaption>
+      <p>当您运行测试时，最终会得到一个漂亮的报告，告诉您有多少规范通过了测试，有多少没有通过（如果有的话）。
+      </p>
+    </figcaption>
+  </figure>
+</section>
+      <section class="section-title" id="17" data-src="slides/conclusion">
+  <h2><span class="highlight">结论</span></h2>
+  <figure>
+    <figcaption>
+      <p>
+        所以，我们学到了什么？
+      </p>
+    </figcaption>
+  </figure>
+</section>
+      <section class="theme-invert" id="18" data-src="slides/web-framework-testing-libraries-2">
+  <h2 hidden="" aria-hidden="false">框架和单元测试</h2>
+  <figure>
+    <img src="slides/web-framework-testing-libraries-2/web-framework-testing-libraries.png" alt="框架和单元测试" class="contain">
+
+    <figcaption>
+      <p>
+        单元测试库仍然是任何负责任的开发人员的工具包的关键部分。我们希望您继续使用您选择的库。Gauge对您使用的单元测试库没有意见，因为Gauge用于编写完全不同类别的测试。
+      </p>
+    </figcaption>
+  </figure>
+</section>
+      <section class="theme-invert" id="19" data-src="slides/design-thinking-2">
+  <h2 hidden="" aria-hidden="false">设计思维始于同理心</h2>
+  <figure>
+    <a href="https://www.interaction-design.org/literature/article/stage-1-in-the-design-thinking-process-empathise-with-your-users">
+      <img src="slides/design-thinking-2/design-thinking-empathy.png" alt="设计思维始于同理心" class="contain" data-src="https://www.interaction-design.org/literature/article/stage-1-in-the-design-thinking-process-empathise-with-your-users">
+    </a>
+
+    <figcaption>
+      <p>
+        Gauge希望您的第一步是移情。Gauge希望您像用户一样思考，因为他们最终将决定您的Web应用程序是否会被接受。
+      </p>
+    </figcaption>
+  </figure>
+</section>
+      <section id="20" data-src="slides/gauge-3">
+  <h2><a href="https://gauge.org/">https://gauge.org/</a></h2>
+  <figure>
+    <a href="https://gauge.org/">
+      <img src="slides/gauge-3/gauge-home.png" alt="Gauge 主页" class="contain-with-header" data-src="https://gauge.org/">
+    </a>
+
+    <figcaption>
+      <p>Gauge用于编写用户体验测试。把最终用户使用的单词和他们所采取的步骤记录到简单的英语Markdown文件中，以您选择的语言实现测试，向他们展示易于阅读的报告，向他们证明您的Web应用程序完全符合他们的要求。
+      </p>
+      <p>如果您已经在编写单元测试，那么这是帮您更进一步并开始像用户（而不是开发人员）一样思考。您准备好接受挑战了吗？</p>
+    </figcaption>
+  </figure>
+</section>
+      <section id="21" data-src="slides/resources">
+  <h2>参考资料</h2>
+  <figure>
+    <table>
+      <tbody><tr>
+        <td colspan="2"><a href="https://thirstyhead.com/introducing-gauge">
+          https://thirstyhead.com/introducing-gauge</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td class="highlight">本幻灯片</td>
+      </tr>
+      <tr>
+        <td colspan="2"><a href="https://thirstyhead.com/groceryworks">
+          https://thirstyhead.com/groceryworks</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td class="highlight">GroceryWorks：一个虚构的杂货店的网站</td>
+      </tr>
+      <tr>
+        <td colspan="2"><a href="https://github.com/thirstyhead/groceryworks">
+          https://github.com/thirstyhead/groceryworks</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td class="highlight">GroceryWorks的源代码</td>
+      </tr>
+      <tr>
+        <td colspan="2"><a href="https://github.com/thirstyhead/groceryworks-test">
+          https://github.com/thirstyhead/groceryworks-test</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td class="highlight">用 Gauge 和 Taiko 为 GroceryWorks 编写的用户体验测试</td>
+      </tr>
+    </tbody></table>
+    <figcaption>
+      <p>以下是此幻灯片的链接和GroceryWorks的源代码，以及相关的 Gauge 和 Taiko 用户体验测试。</p>
+    </figcaption>
+  </figure>
+</section>
+      <section class="main-title" id="22" data-src="slides/title-2">
+  <h2 hidden="" aria-hidden="false">Gauge</h2>
+  <figure>
+    <div class="banner">
+      Gauge
+      <div class="subtitle">
+        用户体验测试框架
+      </div>
+      <div class="bio">
+        <br>
+        Scott Davis<br>
+        <a href="mailto:scott.davis@thoughtworks.com">scott.davis@thoughtworks.com</a><br>
+        <a href="https://twitter.com/scottdavis99">@scottdavis99</a>
+      </div>
+    </div>
+    <figcaption>
+      <p>我希望您能将 Gauge 和 Taiko 添加到您的测试工具包中。谢谢您的时间！</p>
+      <p>
+        演讲者：Scott Davis。邮箱：scott.davis@thoughtworks.com. Twitter：@scottdavis99。
+      </p>
+    </figcaption>
+  </figure>
+</section>
+    </main>
+
+    <script src="js/talk-o-vision.js"></script>
+  
+
+</body></html>
