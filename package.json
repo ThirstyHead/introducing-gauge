@@ -6,6 +6,7 @@
   "license": "CC-BY-4.0",
   "main": "index.html",
   "scripts": {
+    "addlang": "node utils/addlang.js",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/ThirstyHead/introducing-gauge#readme",
   "devDependencies": {
+    "fs-extra": "^7.0.1",
     "talk-o-vision": "github:thirstyhead/talk-o-vision"
   },
   "dependencies": {}

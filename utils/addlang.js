@@ -1,6 +1,4 @@
-// const { readdirSync, lstatSync } = require('fs');
-// const { join } = require('path');
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 
 if(process.argv.length <= 2){
@@ -10,19 +8,11 @@ if(process.argv.length <= 2){
 
 const langDir = process.argv[2];
 const rootDir = 'slides';
-const slideDirs = getDirectories(rootDir);
-for(let i=0; i<slideDirs.length; i++){
-  let dirName = path.join(rootDir, slideDirs[i], langDir);
-  fs.mkdirSync(dirName);
-  console.log(`Creating ${dirName}`);
-}
+const srcDir = path.join(rootDir, 'en-us');
+const destDir = path.join(rootDir, langDir);
 
-
-
-function getDirectories(srcPath){
-  return fs.readdirSync(srcPath).filter( name => {
-    return fs.lstatSync(path.join(srcPath, name)).isDirectory();
-  });
-}
-
+fs.copy(srcDir, destDir, (err) => {
+  if(err) throw err;
+  console.log(`Created ${destDir}`);
+});
 

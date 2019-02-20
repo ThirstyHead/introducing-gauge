@@ -1,6 +1,6 @@
 const http = require('http');
 
-http.get('http://localhost:8000/slides/en-us/index-src.html', (response) => {
+http.get('http://localhost:8000/slides/it-it/index-src.html', (response) => {
   let data = '';
 
   response.on('data', (chunk) => {
