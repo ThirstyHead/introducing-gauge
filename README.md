@@ -16,6 +16,7 @@ This presentation is written in pure, framework-free, browser-native HTML. It ca
 A NodeJS-based web server is included to make it easy to run locally. To run the web server:
 
 ```console
+$ npm install
 $ npm start
 ```
 
