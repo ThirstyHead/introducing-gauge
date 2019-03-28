@@ -1,0 +1,26 @@
+<section class="theme-invert">
+  <h2 hidden aria-hidden="false">The Test Pyramid</h2>
+  <audio src="audio.mp3"></audio>
+  <figure>
+    <a href="https://martinfowler.com/articles/practical-test-pyramid.html">
+      <img src="test-pyramid_1024px.png" alt="The Test Pyramid" class="contain"
+        data-src="https://martinfowler.com/articles/practical-test-pyramid.html">
+    </a>
+
+    <figcaption>
+      <p>Unit tests, Quality equation का एक महत्वपूर्ण हिस्सा हैं. ये Test Pyramid की नींव बनाते हैं| चूँकि ज्यादातर Web
+        developers अपने खुद के Code लिखते हैं, ये unit tests उन्हें उनके Code को Test करना allow करते हैं। इस प्रकार के
+        Tests, Fast run होते हैं और लिखने में आसान होते हैं, क्योंकि इस प्रकार के test, Application के बाकी Complex
+        parts (जैसे database और web services) से अलग run होने के लिए design किये जाते हैं।</p>
+      <p>मैं अक्सर कहता हूँ की unit tests, ईंटों को test करते है इमारत का नहीं| अगर आप ईंटों पर भरोसा नहीं करते हैं तो
+        आप ईमारत का भरोसा नहीं कर सकते हैं|</p>
+      <p>आप Test Pyramid में जितना आगे बढ़ते हैं, Source Code से उतना ही दूर होते जाते हैं और Application के Real Users
+        के नजदीक होते जाते हैं (इस बात को ध्यान में रखें जब हम User Journey Tests के बारे में बात करना शुरू करते हैं)।
+        आप puzzle में कुछ और pieces जोड़ते हैं और tests को fail होने के लिए और जगह मिल जाती है|</p>
+      <p>अगर आपकी organization का मजबूत testing या integration environment नहीं है, जैसे एक जो production environment को
+        जहां तक संभव हो mirror करता है,और एक जो की set up और tear down करना trivial होता है जब आप integration tests को
+        run करतें हैं। यहाँ पर आकर testing common नहीं रह जाती, इसलिए नहीं कि tests कम important होते हैं बल्कि sadly
+        इसलिए क्योंकि उन्हें reliably रन करना कठिन हो जाता है।</p>
+    </figcaption>
+  </figure>
+</section>

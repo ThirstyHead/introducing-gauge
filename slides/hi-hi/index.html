@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Introducing Gauge</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,
+                                   initial-scale=1,
+                                   user-scalable=yes">
+  <meta name="author" content="Scott Davis <scott.davis@thoughtworks.com>">
+  <meta name="description" content="Introducing Gauge">
+  <meta name="keywords" content="ThoughtWorks, Gauge, testing, user journey, fitness function">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/talk-o-vision.css">
+
+  <style>
+    .main-title {
+      background: url('slides/title/gauge.png') no-repeat center center;
+      background-size: contain;
+    }
+
+    .banner {
+      background-color: var(--theme-foreground-color);
+      opacity: 0.9;
+      top: 45vh;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 hidden="" aria-hidden="false">Introducing Gauge</h1>
+  <main class="slideshow">
+    <section class="main-title" id="1" data-src="slides/title">
+      <h2 hidden="" aria-hidden="false">Gauge</h2>
+      <audio src="slides/title/audio.mp3"></audio>
+      <figure>
+        <div class="banner">
+          Gauge
+          <div class="subtitle">
+            User Journey Testing के लिए एक Framework
+          </div>
+          <div class="bio">
+            <br>
+            Scott Davis<br>
+            <a href="mailto:scott.davis@thoughtworks.com">scott.davis@thoughtworks.com</a><br>
+            <a href="https://twitter.com/scottdavis99">@scottdavis99</a>
+          </div>
+        </div>
+        <figcaption>
+          <p>
+            Gauge, User Journey Testing के लिए एक Framework.
+          </p>
+          <p>
+            प्रस्तुतकर्ता: Scott Davis
+            <br />
+            ईमेल: scott.davis@thoughtworks.com
+            <br />
+            ट्विटर: @scottdavis99
+          </p>
+        </figcaption>
+      </figure>
+    </section>
+    <section id="2" data-src="slides/instructions">
+      <h2 aria-hidden="false">निर्देश</h2>
+      <audio src="slides/instructions/audio.mp3"></audio>
+      <figure>
+        <table>
+          <tbody>
+            <tr>
+              <th>कीबोर्ड शॉर्टकट</th>
+              <th>विवरण</th>
+            </tr>
+
+            <tr>
+              <td>→ या [स्पेस]</td>
+              <td>अगली Slide|</td>
+            </tr>
+            <tr>
+              <td>←</td>
+              <td>पिछली Slide|</td>
+            </tr>
+            <tr>
+              <td class="highlight">f</td>
+              <td><span class="highlight">F</span>ullscreen view On या Off करने के लिए|</td>
+            </tr>
+            <tr>
+              <td class="highlight">t</td>
+              <td><span class="highlight">C</span>urrent Slide की Transcript को एक अलग विंडो में खोलने के लिए|</td>
+            </tr>
+            <tr>
+              <td class="highlight">p</td>
+              <td><span class="highlight">C</span>urrent Slide के Audio को Play या Pause करने के लिए|</td>
+            </tr>
+            <tr>
+              <td class="highlight">a</td>
+              <td><span class="highlight">A</span>uto-play audio On करने और अगली स्लाइड पर जाने के लिए|</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <figcaption>
+          <p>
+            यहां कुछ कीबोर्ड शॉर्टकट दिए गए हैं जो आपको Presentation में आगे बढ़ने में मदद करेंगे।
+          </p>
+          <ul>
+            <li>अगली Slide पर जाने के लिए Right Arrow या SpaceBar दबाएँ।</li>
+            <li>पिछली Slide पर जाने के लिए Left Arrow दबाएँ।</li>
+            <li>Full Screen Mode को On या Off करने के लिए 'f' दबाएं।</li>
+            <li>Written Transcripts को एक अलग विंडो में खोलने के लिए 't' दबाएं।</li>
+            <li>Current Slide के Audio को Play या Pause करने के लिए 'p' दबाएँ।</li>
+            <li>Audio को Auto-play करने और अगली Slide पर जाने के लिए 'a' दबाएं|</li>
+          </ul>
+          <p></p>
+        </figcaption>
+      </figure>
+    </section>
+    <section class="theme-invert" id="3" data-src="slides/bio">
+      <h2 hidden="" aria-hidden="false">Biography</h2>
+      <audio src="slides/bio/audio.mp3"></audio>
+      <figure>
+        <img src="slides/bio/scott-davis-bio.png" alt="Scott Davis' Biography" class="contain">
+
+        <figcaption>
+          <p>नमस्कार, मेरा नाम Scott Davis है| Currently मैं ThoughtWorks में एक प्रिंसिपल इंजीनियर हूँ| इससे पहले मैं
+            Denver, Colorado में ThirstyHead नाम की एक Software Consultancy चलाता था|</p>
+          <p>मैं web development के बारे में वर्षों से लिख रहा हूँ। जैसे IBM के लिए Articles, O'Reilly और the Pragmatic
+            Bookshelf के लिए किताबें और हाल ही में O'Reilly के लिए videos भी|</p>
+        </figcaption>
+      </figure>
+    </section>
+    <section id="4" data-src="slides/gauge">
+      <h2><a href="https://gauge.org/">https://gauge.org/</a></h2>
+      <audio src="slides/gauge/audio.mp3"></audio>
+      <figure>
+        <a href="https://gauge.org/">
+          <img src="slides/gauge/gauge-home.png" alt="Gauge home page" class="contain-with-header"
+            data-src="https://gauge.org/">
+        </a>
+
+        <figcaption>
+          <p>आज, मैं आपसे Gauge के बारे में बात करना चाहूंगा। Acceptance Testing के लिए एक Free और Open Source Testing
+            Framework.</p>
+          <p>लेकिन इससे पहले कि हम आगे बढ़ें, मुझे लगता है कि कुछ शब्दों को अच्छे तरीके से समझ लेना बेहतर होगा। Gauge का
+            उपयोग करके हम जो भी करना चाहते है उसके लिए आप मुझे "Acceptance testing" और "User Journey testing" जैसे
+            शब्दों का प्रयोग करते हुए सुनेंगे, क्योंकि मुझे लगता है की ये शब्द Gauge को ज्यादा बेहतर तरीके से define
+            करते है। Gauge का उपयोग करके की जाने वाली Testing एक Typical front-end developer के तौर पर की जाने वाली रोज
+            की testing से काफी अलग है।</p>
+        </figcaption>
+      </figure>
+    </section>
+    <section class="theme-invert" id="5" data-src="slides/web-framework-testing-libraries">
+      <h2 hidden="" aria-hidden="false">Frameworks and Unit Testing</h2>
+      <audio src="slides/web-framework-testing-libraries/audio.mp3"></audio>
+      <figure>
+        <img src="slides/web-framework-testing-libraries/web-framework-testing-libraries.png"
+          alt="Frameworks and Unit Testing" class="contain">
+
+        <figcaption>
+          <p>ज्यादातर Modern Web Framework अपने खुद के Unit Testing Library के साथ आते हैं। यदि आप ReactJS के Fan हैं,
+            तो आप शायद Jest से परिचित होंगे| Angular Developers अपने Unit Testing के लिए Baked-In Library Jasmine का
+            उपयोग करते हैं|</p>
+        </figcaption>
+      </figure>
+    </section>
+    <section class="theme-invert" id="6" data-src="slides/test-pyramid">
+      <h2 hidden="" aria-hidden="false">Test Pyramid</h2>
+      <audio src="slides/test-pyramid/audio.mp3"></audio>
+      <figure>
+        <a href="https://martinfowler.com/articles/practical-test-pyramid.html">
+          <img src="slides/test-pyramid/test-pyramid_1024px.png" alt="Test Pyramid" class="contain"
+            data-src="https://martinfowler.com/articles/practical-test-pyramid.html">
+        </a>
+
+        <figcaption>
+          <p>Unit tests, Quality equation का एक महत्वपूर्ण हिस्सा हैं. ये Test Pyramid की नींव बनाते हैं| चूँकि ज्यादातर
+            Web developers अपने खुद के Code लिखते हैं, ये unit tests उन्हें उनके Code को Test करना allow करते हैं। इस
+            प्रकार के Tests, Fast run होते हैं और लिखने में आसान होते हैं, क्योंकि इस प्रकार के test, Application के
+            बाकी Complex parts (जैसे database और web services) से अलग run होने के लिए design किये जाते हैं।</p>
+          <p>मैं अक्सर कहता हूँ की unit tests, ईंटों को test करते है इमारत का नहीं| अगर आप ईंटों पर भरोसा नहीं करते हैं
+            तो आप ईमारत का भरोसा नहीं कर सकते हैं|</p>
+          <p>आप Test Pyramid में जितना आगे बढ़ते हैं, Source Code से उतना ही दूर होते जाते हैं और Application के Real
+            Users के नजदीक होते जाते हैं (इस बात को ध्यान में रखें जब हम User Journey Tests के बारे में बात करना शुरू
+            करते हैं)। आप puzzle में कुछ और pieces जोड़ते हैं और tests को fail होने के लिए और जगह मिल जाती है|</p>
+          <p>अगर आपकी organization का मजबूत testing या integration environment नहीं है, जैसे एक जो production
+            environment को जहां तक संभव हो mirror करता है,और एक जो की set up और tear down करना trivial होता है जब आप
+            integration tests को run करतें हैं। यहाँ पर आकर testing common नहीं रह जाती, इसलिए नहीं कि tests कम
+            important होते हैं बल्कि sadly इसलिए क्योंकि उन्हें reliably रन करना कठिन हो जाता है।</p>
+        </figcaption>
+      </figure>
+    </section>
+    <section class="theme-invert" id="7" data-src="slides/unit-test">
+      <h2 hidden="" aria-hidden="false">Unit Testing</h2>
+      <audio src="slides/unit-test/audio.mp3"></audio>
+      <figure>
+        <a href="https://martinfowler.com/bliki/UnitTest.html">
+          <img src="slides/unit-test/unit-test.png" alt="Unit Testing" class="contain"
+            data-src="https://martinfowler.com/bliki/UnitTest.html">
+        </a>
+
+        <figcaption>
+          <p>मैं बहुत सारे unit tests देखता हूँ जो कि सही मायनों में शायद unit tests ना हों। चूँकि "any test is better
+            than no test", मैं उन unit tests की आलोचना करने में संकोच करता हूँ जो कि उतना ज्यादा isolated नहीं होते
+            जितना कि मैं ideal scenario में पसंद करूँगा।</p>
+          <p>लेकिन मुझे लगता है की Unit tests की एक परिभाषा से हम सब सहमत हो सकते हैं -- unit tests developer के फायदे
+            के लिए है न की users के। मैंने आज तक किसी भी user को ये पूछते नहीं सुना की जिस website का मैं डेमो कर रहा
+            हूँ उसका कितना code coverage है, या फिर मैंने null pointer exception के लिए कितने edge cases test किये हैं।
+            भले ही unit tests coverage, users को indirectly निश्चित रूप से फायदे देते है, unit test के सबसे ज्यादा फायदे
+            developers को ही होते हैं।</p>
+        </figcaption>
+      </figure>
+    </section>
+    <section class="theme-invert" id="8" data-src="slides/react-unit-test">
+      <h2 hidden="" aria-hidden="false">React Unit Testing</h2>
+      <audio src="slides/react-unit-test/audio.mp3"></audio>
+      <figure>
+        <a href="https://jestjs.io/docs/en/getting-started">
+          <img src="slides/react-unit-test/react-unit-test.png" alt="React Unit Testing" class="contain"
+            data-src="https://jestjs.io/docs/en/getting-started">
+        </a>
+
+        <figcaption>
+          <p>आइए एक उदाहरण देखते हैं कि मैं किस बारे में बात कर रहा हूं. अगर आप React में एक custom 'sum' function लिखते
+            हैं, तो उस function को validate करने के लिए आप एक corresponding unit test भी लिखते है। यहाँ अगर आप ध्यान दे
+            तो पाएंगे तो 'sum' function user द्वारा देखे जाने वाले web view से पूरी तरह isolated है, यहां तक कि आपके कुछ
+            और higher level function जो की इस fact पर निर्भर करते है की 1 plus 2 वास्तव में 3 होता है।</p>
+        </figcaption>
+      </figure>
+    </section>
+    <section class="theme-invert" id="9" data-src="slides/angular-unit-test">
+      <h2 hidden="" aria-hidden="false">Angular Unit Testing</h2>
+      <audio src="slides/angular-unit-test/audio.mp3"></audio>
+      <figure>
+        <a href="https://angular.io/guide/testing#component-test-basics">
+          <img src="slides/angular-unit-test/angular-unit-test.png" alt="Angular Unit Testing" class="contain"
+            data-src="https://angular.io/guide/testing#component-test-basics">
+        </a>
+
+        <figcaption>
+          <p>आइये एक और थोड़ा ज्यादा realistic उदहारण Angular में देखते है। Developer एक LightSwitch component create
+            करता है, और हर responsible developer की तरह उसे test करने के लिए corresponding unit tests भी create करता है।
+          </p>
+          <p>End-User के perspective से वे स्क्रीन पर 'use default shipping address' या 'bill to credit card on file'
+            widget को टिक करते हैं। उन्हें निश्चित रूप से एक well-behaved LightSwitch component का फायदा मिलता है लेकिन
+            अगर आप इन unit tests को देखे तो ये clear है की ये उस अगले developer के फायदे के लिए लिखे गए है जो codebase
+            के इस part पर बाद में काम करता है, न कि उस end user के जो की इस LightSwitch component से directly interact
+            करेगा।</p>
+        </figcaption>
+      </figure>
+    </section>
+    <section id="10" data-src="slides/gauge-2">
+      <h2><a href="https://gauge.org/">https://gauge.org/</a></h2>
+      <audio src="slides/gauge-2/audio.mp3"></audio>
+      <figure>
+        <a href="https://gauge.org/">
+          <img src="slides/gauge-2/gauge-home.png" alt="Gauge home page" class="contain-with-header"
+            data-src="https://gauge.org/">
+        </a>
+
+        <figcaption>
+          <p>So, remember Gauge? आखिर उसी की वजह से तो हमने ये conversation start की थी, Right??
+          </p>
+          <p>
+            अब चूँकि हम unit tests के बारे में समझ चुके हैं, मै ये कहना चाहूंगा कि Gauge आपके पसंदीदा unit testing
+            library को replace नहीं करता। Gauge user-focused tests लिखने के लिए है, न कि developer-focused tests. Gauge,
+            User Journey tests लिखने के लिए है।
+          </p>
+        </figcaption>
+      </figure>
+    </section>
+    <section class="theme-invert" id="11" data-src="slides/user-journey-test">
+      <h2 hidden="" aria-hidden="false">User Journey Test</h2>
+      <audio src="slides/user-journey-test/audio.mp3"></audio>
+      <figure>
+        <a href="https://martinfowler.com/bliki/UserJourneyTest.html">
+          <img src="slides/user-journey-test/user-journey-test.png" alt="User Journey Test" class="contain"
+            data-src="https://martinfowler.com/bliki/UserJourneyTest.html">
+        </a>
+
+        <figcaption>
+          <p>User Journey tests, End-User की भाषा में लिखे जाते हैं, न कि developer की (Programming या Spoken). आम तौर
+            पर User कुछ ऐसे कहता है जैसे, मैं अपनी shopping cart में कुछ टमाटर add करना चाहूंगा, User ये नहीं कहेगा की
+            मैं इस selected string को Cart component के string वाले Array में add करना चाहूंगा।</p>
+          <p>इससे literal-minded developers हसते हुए सोच सकते है कि जब तक functionality test हो रही है तो क्या test कि
+            language वास्तव में matter करती है?</p>
+          <p>मैं तो कहूंगा कि हाँ यह matter करता है । यह वास्तव में matter करता है , खासकर की जब हम User Journey tests
+            के बारे में बात कर रहें हैं। आप उन्हें acceptance tests भी कह सकते हैं क्योक़ि वास्तव में हम यह जानने की
+            कोशिश कर रहे हैं की user को एक acceptable website किस तरह दिखेगी
+            -- क्या यह acceptable होगी अगर आप cart में items add नहीं कर सकते हैं? क्या यह acceptable होगी अगर आप
+            checkout नहीं कर सकते और वास्तव में items खरीद नहीं सकते हैं ?</p>
+          <p>इसलिए इन tests को User Journey tests कहकर, यह Users को conversations में सबसे आगे लाता है। Tests User की
+            language में लिखे जाते है। Ultimately, project का acceptance User पर निर्भर करता है न की developer पर।</p>
+        </figcaption>
+      </figure>
+    </section>
+    <section class="theme-invert" id="12" data-src="slides/design-thinking">
+      <h2 hidden="" aria-hidden="false">Design Thinking Starts with Empathy</h2>
+      <audio src="slides/design-thinking/audio.mp3"></audio>
+      <figure>
+        <a
+          href="https://www.interaction-design.org/literature/article/stage-1-in-the-design-thinking-process-empathise-with-your-users">
+          <img src="slides/design-thinking/design-thinking-empathy.png" alt="Design Thinking starts with empathy."
+            class="contain"
+            data-src="https://www.interaction-design.org/literature/article/stage-1-in-the-design-thinking-process-empathise-with-your-users">
+        </a>
+
+        <figcaption>
+          <p>अगर आप किसी typical developer से पूछतें हैं की किसी नए project का पहला Step क्या है, तो वो कहेंगें , "web
+            framework चुनना" या फिर "नयी code repository set up करना"|.</p>
+          <p>अगर आप यही सवाल एक Design Thinking के fans से पूछेंगें तो वो कहेंगे "Empathy"| खुद को User की जगह रख कर
+            सोचना| यह समझना की वो इस App से चाहते क्या हैं। </p>
+          <p>क्योंकि जब आप User की भाषा में tests लिखना शुरू करते हैं, तो यह आपको User की तरह सोचने में मदद करता है और
+            फिर, यह आपकी creativity को एक अलग direction में open करता है। अगर मैं हर हफ्ते टमाटर खरीदता हूं, तो क्या यह
+            अच्छा नहीं होगा कि मैं पिछले हफ्ते की shopping cart को purchase कर सकूँ, जो मैं usually खरीदता हूं? मैं अपने
+            unit tests के लिए एक pre -written shopping list अपनी कार्ट में already upload कर रहा हूँ, क्या यह मेरे Users
+            के काम को आसान नहीं बना देगा अगर वो भी ये ही कर सकें?</p>
+        </figcaption>
+      </figure>
+    </section>
+    <section id="13" data-src="slides/groceryworks">
+      <h2 hidden="" aria-hidden="false">GroceryWorks</h2>
+      <audio src="slides/groceryworks/audio.mp3"></audio>
+      <figure>
+        <a href="https://thirstyhead.com/groceryworks">https://thirstyhead.com/grocery
+          works</a>
+        <a href="https://thirstyhead.com/groceryworks">
+          <img src="slides/groceryworks/groceryworks.png" alt="GroceryWorks" class="contain"
+            data-src="https://thirstyhead.com/groceryworks">
+        </a>
+
+        <figcaption>
+          <p>तो, यहाँ GroceryStore नाम की एक fictional grocery store के लिए एक website है। जब आप click करते हैं, तो
+            देखतें हैं कि बायीं तरफ categories पर tap करने पर यह अलग अलग food Items को दिखाती है। -- beans, nuts, pasta,
+            produce, इत्यादि. किसी भी food item पर click करने पर वह दायीं ओर Cart में add हो जाता है| food item पर
+            दुबारा click करने पर वह cart से remove हो जाता है|'Purchase' पर click करके आप order को complete या cancel कर
+            सकतें हैं।
+          </p>
+        </figcaption>
+      </figure>
+    </section>
+    <section id="14" data-src="slides/gauge-specs">
+      <h2 hidden="" aria-hidden="false">Gauge Specs</h2>
+      <audio src="slides/gauge-specs/audio.mp3"></audio>
+      <figure>
+        <a href="https://gauge.org/">
+          <img src="slides/gauge-specs/gauge-specs.png" alt="Gauge Specs" class="contain" data-src="https://gauge.org/">
+        </a>
+
+        <figcaption>
+          <p>Gauge में लिखे गए User Journey tests के दो complementary part होते हैं - Specifications, जो की Markdown में
+            लिखे जाते है, और Tests जो की आप की पसंदीदा Programming Language में लिखे जाते हैं (इस बारे में और बातें थोड़ी
+            देर में करते हैं)|</p>
+          <p>Markdown, basically plain text होती है। इसमें कुछ simple decorators का उपयोग किया जाता है जैसे headers के
+            लिए dashes, bullet points के लिए asterisks. Headers आपके specs के नाम को और bullet points individual steps
+            को represent करते हैं। Markdown आपको steps को ठीक उसी language में express करना allow करता है जो language
+            आपका End-User उनको describe करने के लिए use करता है।</p>
+        </figcaption>
+      </figure>
+    </section>
+    <section id="15" data-src="slides/gauge-impl">
+      <h2 hidden="" aria-hidden="false">Gauge Impls</h2>
+      <audio src="slides/gauge-impl/audio.mp3"></audio>
+      <figure>
+        <a href="https://gauge.org/">
+          <img src="slides/gauge-impl/gauge-impl.png" alt="Gauge Impls" class="contain" data-src="https://gauge.org/">
+        </a>
+
+        <figcaption>
+          <p>आप अपने tests को अपनी पसंदीदा Programming Language में लिख सकते हैं जैसे: Javascript, C#, Java, Python या
+            Ruby. यहाँ आप जो tests देख रहे हैं वो ThoughtWorks द्वारा लिखी गयी Taiko नाम की एक Javaacript library का
+            उपयोग करके लिखे गए हैं। मैं इससे वास्तव में impressed हूँ। देखिये कितने lightweight और readable syntax हैं|
+          </p>
+          <p>आप अभी तक शायद यह समझ चुके होंगे की Markdown का हर step अपने corresponding Javascript test को simple string
+            comparison करके ढूंढता है। क्या आपको नहीं लगता की "Simplicity is the best kind of cleverness"?</p>
+        </figcaption>
+      </figure>
+    </section>
+    <section id="16" data-src="slides/gauge-report">
+      <h2 hidden="" aria-hidden="false">Gauge Report</h2>
+      <audio src="slides/gauge-report/audio.mp3"></audio>
+      <figure>
+        <img src="slides/gauge-report/gauge-report.png" alt="Gauge Report" class="contain"
+          data-src="https://gauge.org/">
+        <figcaption>
+          <p>जब आप अपने test run करते हैं तो आपको एक अच्छी सी report मिलती है जो बताती है की आपके कितने specification
+            pass हुये और अगर वे fail हुये तो किन steps की वजह से उन्हें fail होना पड़ा?</p>
+        </figcaption>
+      </figure>
+    </section>
+    <section class="section-title" id="17" data-src="slides/conclusion">
+      <h2><span class="highlight">Conclusion</span></h2>
+      <audio src="slides/conclusion/audio.mp3"></audio>
+      <figure>
+        <figcaption>
+          <p>
+            तो, हमने क्या सीखा?
+          </p>
+        </figcaption>
+      </figure>
+    </section>
+    <section class="theme-invert" id="18" data-src="slides/web-framework-testing-libraries-2">
+      <h2 hidden="" aria-hidden="false">Frameworks and Unit Testing</h2>
+      <audio src="slides/web-framework-testing-libraries-2/audio.mp3"></audio>
+      <figure>
+        <img src="slides/web-framework-testing-libraries-2/web-framework-testing-libraries.png"
+          alt="Frameworks and Unit Testing" class="contain">
+        <figcaption>
+          <p>Unit testing libraries फिर भी किसी responsible developer के toolkit का एक महत्वपूर्ण हिस्सा हैं। हम चाहते
+            हैं की आप अपनी पसंदीदा library उपयोग करना जारी रखें। आप कौन सी unit testing library का उपयोग करते हैं, इस
+            बारे में Gauge का कोई opinion नहीं है, क्योंकि Gauge एक पूरी तरह से अलग category के tests को लिखने के लिए
+            हैं।</p>
+        </figcaption>
+      </figure>
+    </section>
+    <section class="theme-invert" id="19" data-src="slides/design-thinking-2">
+      <h2 hidden="" aria-hidden="false">Design Thinking Starts with Empathy</h2>
+      <audio src="slides/design-thinking-2/audio.mp3"></audio>
+      <figure>
+        <a
+          href="https://www.interaction-design.org/literature/article/stage-1-in-the-design-thinking-process-empathise-with-your-users">
+          <img src="slides/design-thinking-2/design-thinking-empathy.png" alt="Design Thinking starts with empathy."
+            class="contain"
+            data-src="https://www.interaction-design.org/literature/article/stage-1-in-the-design-thinking-process-empathise-with-your-users">
+        </a>
+
+        <figcaption>
+          <p>Gauge चाहता है कि आपका Step #1 'Empathy' हो। Gauge चाहता है आप एक user की तरह सोचें, क्योंकि ultimately वही
+            decide करेंगे की आपका web app acceptable है या नहीं।</p>
+        </figcaption>
+      </figure>
+    </section>
+    <section id="20" data-src="slides/gauge-3">
+      <h2><a href="https://gauge.org/">https://gauge.org/</a></h2>
+      <audio src="slides/gauge-3/audio.mp3"></audio>
+      <figure>
+        <a href="https://gauge.org/">
+          <img src="slides/gauge-3/gauge-home.png" alt="Gauge home page" class="contain-with-header"
+            data-src="https://gauge.org/">
+        </a>
+
+        <figcaption>
+          <p>Gauge, User Journey tests लिखने के लिए है। Gauge का उपयोग करके आप User द्वारा लिए जाने वाले steps को और
+            उनकी language को plain markdown में capture कर सकते हैं। आप उन्हें easy-to reports दिखाकर ये prove कर सकते
+            हैं कि आपका web app ठीक वही करता जो वे इसे करने को कहते हैं।</p>
+          <p>अगर आप already unit tests लिख रहें हैं, तो आपके पास मौका level up करने का और एक user की तरह सोचना शुरू करने
+            का। क्या आप तैयार हैं इस challenge के लिए?</p>
+        </figcaption>
+      </figure>
+    </section>
+    <section id="21" data-src="slides/resources">
+      <h2>Resources</h2>
+      <audio src="slides/resources/audio.mp3"></audio>
+      <figure>
+        <table>
+          <tbody>
+            <tr>
+              <td colspan="2"><a href="https://thirstyhead.com/introducing-gauge">
+                  https://thirstyhead.com/introducing-gauge</a></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td class="highlight">This slideshow</td>
+            </tr>
+            <tr>
+              <td colspan="2"><a href="https://thirstyhead.com/groceryworks">
+                  https://thirstyhead.com/groceryworks</a></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td class="highlight">GroceryWorks: एक fictional grocery store के लिए एक website</td>
+            </tr>
+            <tr>
+              <td colspan="2"><a href="https://github.com/thirstyhead/groceryworks">
+                  https://github.com/thirstyhead/groceryworks</a></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td class="highlight">GroceryWorks के लिए Source Code</td>
+            </tr>
+            <tr>
+              <td colspan="2"><a href="https://github.com/thirstyhead/groceryworks-test">
+                  https://github.com/thirstyhead/groceryworks-test</a></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td class="highlight">GroceryWorks के User Journey tests (Gauge और Taiko का उपयोग करके ) के लिए source
+                code </td>
+            </tr>
+          </tbody>
+        </table>
+        <figcaption>
+          <p>यहाँ पर इस slideshow और GroceryWorks के source code के लिंक दिए गए हैं, साथ में Gauge और Taiko का उपयोग
+            करके लिखे गए User Journey tests के source के लिंक भी दिए गए हैं।</p>
+        </figcaption>
+      </figure>
+    </section>
+    <section class="main-title" id="22" data-src="slides/title-2">
+      <h2 hidden="" aria-hidden="false">Introducing Gauge</h2>
+      <audio src="slides/title-2/audio.mp3"></audio>
+      <figure>
+        <div class="banner">
+          Introducing Gauge
+          <div class="subtitle">
+            User Journey Testing के लिए एक Framework
+          </div>
+          <div class="bio">
+            <br>
+            Scott Davis<br>
+            <a href="mailto:scott.davis@thoughtworks.com">scott.davis@thoughtworks.com</a><br>
+            <a href="https://twitter.com/scottdavis99">@scottdavis99</a>
+          </div>
+        </div>
+        <figcaption>
+          <p>मैं उम्मीद करता हूँ की आप को एक झलक मिल गयी होगी की Gauge और Taiko आपकी testing toolkit में क्या add करते
+            हैं। अपना समय देने के लिए धन्यवाद!
+          </p>
+          <p>
+            प्रस्तुतकर्ता: Scott Davis
+            <br />
+            ईमेल: scott.davis@thoughtworks.com
+            <br />
+            ट्विटर: @scottdavis99
+          </p>
+        </figcaption>
+      </figure>
+    </section>
+  </main>
+
+  <script src="js/talk-o-vision.js"></script>
+
+</body>
+
+</html>
