@@ -257,3 +257,19 @@ p.right{
 .theme-invert th{
   border-bottom: 2px solid var(--theme-background-color);
 }
+
+
+
+
+/**************************
+  Printing 
+***************************/
+@media print{
+  @page{
+    size: letter landscape;
+  }
+}
+
+
+
+
