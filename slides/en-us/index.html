@@ -16,13 +16,12 @@
         background-size: contain;
       }
 
-
       .banner{
-        background-color: var(--theme-foreground-color);
-        color: var(--theme-background-color);
+        background-color: var(--theme-background-color);
         opacity: 0.9;
         top: 45vh;
       }
+
     </style>
   </head>
   <body>
@@ -34,19 +33,31 @@
         <style>
           .custom-banner{
             padding-left: 1em;
+            margin-left: 0.8em;
             text-align: left;
             font-size: 2em;
             font-weight: bold; 
+            color: var(--theme-background-color);
           }
 
           .custom-bio{
+            margin-right: 43vw;
+            margin-top: 7em;
+            padding: 1em;
             text-align: left;
             font-size: 0.5em;
+            color: var(--theme-background-color);
+            background-color: var(--theme-foreground-color);
+          }
+
+          .custom-bio a{
+            color: var(--theme-background-color);
           }
 
           .custom-subtitle{
             font-size: 0.6em;
             font-style: italic;
+            color: var(--theme-background-color);
           }
         </style>
         <figure>
@@ -56,7 +67,6 @@
               A Framework for <br>User Journey Testing
             </div>
             <div class="custom-bio">
-              <br>
               Scott Davis<br>
               <a href="mailto:scott.davis@thoughtworks.com">scott.davis@thoughtworks.com</a><br>
               <a href="https://twitter.com/scottdavis99">@scottdavis99</a>
@@ -74,7 +84,7 @@
         </figure>
       </section>
       <section id="2" data-src="slides/instructions">
-        <h2 aria-hidden="false">Instructions</h2>
+        <h2 aria-hidden="false" style="font-size: 1.5em;">Instructions</h2>
         <audio src="slides/instructions/audio.mp3"></audio>
         <figure>
           <table>
@@ -128,7 +138,7 @@
         <h2 hidden="" aria-hidden="false">Biography</h2>
         <audio src="slides/bio/audio.mp3"></audio>
         <figure>
-          <img src="slides/bio/scott-davis-bio.png" alt="Scott Davis' Biography" class="contain">
+          <img src="slides/bio/scott-davis-bio-2.png" alt="Scott Davis' Biography" class="contain">
 
           <figcaption>
            <p>Hi! My name is Scott Davis. I'm currently a Principle Engineer
@@ -466,7 +476,6 @@
               A Framework for <br>User Journey Testing
             </div>
             <div class="custom-bio">
-              <br>
               Scott Davis<br>
               <a href="mailto:scott.davis@thoughtworks.com">scott.davis@thoughtworks.com</a><br>
               <a href="https://twitter.com/scottdavis99">@scottdavis99</a>
