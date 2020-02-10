@@ -1,0 +1,25 @@
+<section class="theme-invert">
+  <h2 hidden aria-hidden="false">User Journey Test</h2>
+  <audio src="audio.mp3"></audio>
+  <figure>
+    <a href="https://martinfowler.com/bliki/UserJourneyTest.html">
+      <img src="user-journey-test.png" alt="User Journey Test" class="contain"
+        data-src="https://martinfowler.com/bliki/UserJourneyTest.html">
+    </a>
+
+    <figcaption>
+      <p>User Journey tests, End-User की भाषा में लिखे जाते हैं, न कि developer की (Programming या Spoken). आम तौर पर
+        User कुछ ऐसे कहता है जैसे, मैं अपनी shopping cart में कुछ टमाटर add करना चाहूंगा, User ये नहीं कहेगा की मैं इस
+        selected string को Cart component के string वाले Array में add करना चाहूंगा।</p>
+      <p>इससे literal-minded developers हसते हुए सोच सकते है कि जब तक functionality test हो रही है तो क्या test कि
+        language वास्तव में matter करती है?</p>
+      <p>मैं तो कहूंगा कि हाँ यह matter करता है । यह वास्तव में matter करता है , खासकर की जब हम User Journey tests के
+        बारे में बात कर रहें हैं। आप उन्हें acceptance tests भी कह सकते हैं क्योक़ि वास्तव में हम यह जानने की कोशिश कर
+        रहे हैं की user को एक acceptable website किस तरह दिखेगी
+        -- क्या यह acceptable होगी अगर आप cart में items add नहीं कर सकते हैं? क्या यह acceptable होगी अगर आप checkout
+        नहीं कर सकते और वास्तव में items खरीद नहीं सकते हैं ?</p>
+      <p>इसलिए इन tests को User Journey tests कहकर, यह Users को conversations में सबसे आगे लाता है। Tests User की
+        language में लिखे जाते है। Ultimately, project का acceptance User पर निर्भर करता है न की developer पर।</p>
+    </figcaption>
+  </figure>
+</section>
